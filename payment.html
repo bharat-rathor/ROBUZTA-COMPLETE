@@ -1,0 +1,296 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Payment | REPAIRE</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0369a1', // Robuzta Blue
+                        secondary: '#0ea5e9', // Lighter Blue
+                        dark: '#ffffff', // White
+                        card: '#f8fafc', // Slate 50
+                        success: '#10B981',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-card text-slate-900 font-sans antialiased overflow-x-hidden selection:bg-primary selection:text-slate-900">
+
+    <header class="fixed w-full top-0 z-50 bg-dark/80 backdrop-blur-md border-b border-slate-200 py-4 shadow-lg">
+        <div class="w-full px-6 lg:px-12 flex items-center justify-between">
+            <a href="index.html" class="flex flex-col items-start justify-center group cursor-pointer hover:opacity-90 transition-opacity scale-90 origin-left">
+                <div class="text-[32px] font-black tracking-[-0.05em] leading-none uppercase font-heading text-slate-900 flex items-center">
+                    REPAI<span class="text-primary relative mx-[1px] inline-block">
+                        R
+                        <span class="absolute top-[8px] left-0 w-full h-[2.5px] bg-white z-10"></span>
+                        <span class="absolute bottom-[10px] left-0 w-full h-[2.5px] bg-white z-10"></span>
+                    </span>E
+                </div>
+                <div class="flex mt-0.5 ml-1 -skew-x-[15deg] text-[9px] font-bold tracking-[0.15em] uppercase overflow-hidden shadow-sm">
+                    <div class="bg-primary text-white px-2 py-0.5 pl-2.5">TECH</div>
+                    <div class="bg-slate-900 text-white px-2 py-0.5 pr-2.5">LABS</div>
+                </div>
+            </a>
+            <div class="hidden lg:flex items-center gap-4">
+                <a href="booking.html" class="px-6 py-2.5 rounded-full bg-primary hover:bg-primary/90 font-medium text-white transition-all shadow-[0_0_15px_rgba(3,105,161,0.4)]">
+                    Book Repair
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-32 pb-24 min-h-screen flex items-center justify-center">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="grid lg:grid-cols-2 gap-12">
+                
+                <!-- Order Summary -->
+                <div class="bg-dark border border-slate-200 rounded-3xl p-8 lg:p-10 shadow-xl h-fit">
+                    <h2 class="text-2xl font-bold font-heading mb-6 border-b border-slate-200 pb-4">Order Summary</h2>
+                    
+                    <div id="loadingSummary" class="text-center py-8 text-slate-500">
+                        <i class="fa-solid fa-circle-notch fa-spin text-3xl text-primary mb-4"></i>
+                        <p>Loading booking details...</p>
+                    </div>
+                    
+                    <div id="orderSummary" class="hidden space-y-6">
+                        <div class="flex items-center justify-between">
+                            <span class="text-slate-500">Repair ID</span>
+                            <span id="payRepairId" class="font-bold text-primary"></span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-slate-500">Device</span>
+                            <span id="payDevice" class="font-bold"></span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-slate-500">Issue</span>
+                            <span id="payIssue" class="font-medium text-slate-700"></span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-slate-500">Service Mode</span>
+                            <span id="payMode" class="font-medium text-slate-700"></span>
+                        </div>
+                        
+                        <div class="border-t border-slate-200 pt-6">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-slate-500">Subtotal</span>
+                                <span id="paySubtotal" class="font-medium text-slate-700"></span>
+                            </div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-slate-500">GST (18%)</span>
+                                <span id="payTax" class="font-medium text-slate-700"></span>
+                            </div>
+                            <div class="flex items-center justify-between border-t border-slate-200 pt-4">
+                                <span class="text-lg font-bold">Total Amount</span>
+                                <span id="payTotal" class="text-3xl font-bold text-primary font-heading"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Payment Form -->
+                <div class="bg-dark border border-slate-200 rounded-3xl p-8 lg:p-10 shadow-xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-[40px] pointer-events-none"></div>
+                    
+                    <h2 class="text-2xl font-bold font-heading mb-6 border-b border-slate-200 pb-4">Payment Details</h2>
+                    
+                    <form id="paymentForm" class="space-y-6">
+                        <!-- Payment Method Toggle -->
+                        <div class="grid grid-cols-2 gap-4 mb-6">
+                            <label class="flex flex-col items-center justify-center p-4 bg-card border border-primary rounded-xl cursor-pointer transition-colors relative">
+                                <input type="radio" name="payMethod" value="UPI" class="absolute opacity-0" checked>
+                                <div class="absolute top-2 right-2 text-primary hidden check-icon"><i class="fa-solid fa-circle-check"></i></div>
+                                <i class="fa-brands fa-google-pay text-3xl mb-2 text-slate-700"></i>
+                                <span class="text-sm font-bold">UPI / QR</span>
+                            </label>
+                            <label class="flex flex-col items-center justify-center p-4 bg-dark border border-slate-200 rounded-xl cursor-pointer hover:border-primary/50 transition-colors relative">
+                                <input type="radio" name="payMethod" value="Card" class="absolute opacity-0">
+                                <div class="absolute top-2 right-2 text-primary hidden check-icon"><i class="fa-solid fa-circle-check"></i></div>
+                                <i class="fa-regular fa-credit-card text-3xl mb-2 text-slate-700"></i>
+                                <span class="text-sm font-bold">Card</span>
+                            </label>
+                        </div>
+
+                        <!-- Card Details -->
+                        <div id="cardDetails" class="space-y-4 hidden">
+                            <div>
+                                <label class="block text-sm font-medium text-slate-600 mb-2">Name on Card</label>
+                                <input type="text" class="w-full bg-card border border-slate-200 rounded-xl py-3 px-4 text-slate-900 focus:outline-none focus:border-primary transition-colors" placeholder="John Doe">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-slate-600 mb-2">Card Number</label>
+                                <div class="relative">
+                                    <input type="text" class="w-full bg-card border border-slate-200 rounded-xl py-3 px-4 pl-12 text-slate-900 focus:outline-none focus:border-primary transition-colors tracking-widest" placeholder="0000 0000 0000 0000" maxlength="19">
+                                    <i class="fa-brands fa-cc-visa absolute left-4 top-1/2 -translate-y-1/2 text-xl text-slate-400"></i>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-slate-600 mb-2">Expiry</label>
+                                    <input type="text" class="w-full bg-card border border-slate-200 rounded-xl py-3 px-4 text-slate-900 focus:outline-none focus:border-primary transition-colors text-center" placeholder="MM/YY" maxlength="5">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-slate-600 mb-2">CVV</label>
+                                    <input type="password" class="w-full bg-card border border-slate-200 rounded-xl py-3 px-4 text-slate-900 focus:outline-none focus:border-primary transition-colors text-center" placeholder="***" maxlength="3">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- UPI Details -->
+                        <div id="upiDetails" class="space-y-4 text-center">
+                            <div class="w-48 h-48 mx-auto bg-slate-200 rounded-xl flex items-center justify-center p-2 border-2 border-dashed border-slate-300">
+                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=upi://pay?pa=repaireservice@okicici&pn=Repaire" alt="UPI QR" class="w-full h-full object-contain mix-blend-multiply">
+                            </div>
+                            <p class="text-sm font-medium text-slate-600">Scan QR Code using PhonePe, GPay, or Paytm</p>
+                            <div class="relative mt-4">
+                                <div class="absolute inset-0 flex items-center">
+                                    <div class="w-full border-t border-slate-200"></div>
+                                </div>
+                                <div class="relative flex justify-center text-sm">
+                                    <span class="px-2 bg-dark text-slate-500">OR</span>
+                                </div>
+                            </div>
+                            <div class="mt-4 text-left">
+                                <label class="block text-sm font-medium text-slate-600 mb-2">Enter UPI ID</label>
+                                <input type="text" class="w-full bg-card border border-slate-200 rounded-xl py-3 px-4 text-slate-900 focus:outline-none focus:border-primary transition-colors" placeholder="username@upi">
+                            </div>
+                        </div>
+                        
+                        <button type="submit" id="payBtn" class="w-full py-4 bg-primary hover:bg-primary/90 text-white rounded-xl font-bold transition-all shadow-[0_0_15px_rgba(3,105,161,0.3)] mt-6 disabled:opacity-50" disabled>
+                            Complete Payment
+                        </button>
+                    </form>
+                    
+                    <div id="paymentSuccess" class="hidden absolute inset-0 bg-dark/95 backdrop-blur-md flex flex-col items-center justify-center p-8 text-center z-10 transition-opacity">
+                        <div class="w-20 h-20 bg-success/20 rounded-full flex items-center justify-center text-4xl text-success mx-auto mb-6">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                        <h3 class="text-3xl font-bold font-heading mb-2">Payment Successful!</h3>
+                        <p class="text-slate-600 mb-8">Thank you! Your payment has been received and your booking is confirmed.</p>
+                        <a href="tracking.html" class="px-8 py-3 bg-primary hover:bg-primary/90 text-white rounded-xl font-bold transition-all shadow-[0_0_15px_rgba(3,105,161,0.3)]">Track Your Device</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-card border-t border-slate-200 pt-10 pb-10 mt-auto">
+        <div class="container mx-auto px-6 flex items-center justify-between text-sm text-slate-500">
+            <p>&copy; 2026 REPAIRE. All rights reserved.</p>
+            <div class="flex gap-4">
+                <i class="fa-brands fa-cc-visa text-2xl"></i>
+                <i class="fa-brands fa-cc-mastercard text-2xl"></i>
+                <i class="fa-brands fa-google-pay text-2xl"></i>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const repairId = urlParams.get('id');
+            const currentUser = localStorage.getItem('currentUser');
+            
+            if(!currentUser) {
+                // If not logged in, they shouldn't be here. Save redirect and go to login
+                localStorage.setItem('redirectAfterLogin', 'payment.html?id=' + repairId);
+                window.location.href = 'login.html';
+                return;
+            }
+
+            if (repairId) {
+                const bookingData = JSON.parse(localStorage.getItem(repairId));
+                if (bookingData) {
+                    document.getElementById('loadingSummary').classList.add('hidden');
+                    document.getElementById('orderSummary').classList.remove('hidden');
+                    
+                    document.getElementById('payRepairId').innerText = bookingData.repairId;
+                    document.getElementById('payDevice').innerText = bookingData.brand + ' ' + bookingData.device;
+                    document.getElementById('payIssue').innerText = bookingData.issue;
+                    document.getElementById('payMode').innerText = bookingData.status === 'Doorstep Pickup' ? bookingData.status : 'Store Drop-off';
+                    
+                    // Parse cost which is a string like "₹1499"
+                    const baseCostStr = bookingData.cost.replace(/[^0-9.]/g, '');
+                    const baseCost = parseFloat(baseCostStr) || 0;
+                    
+                    const tax = baseCost * 0.18;
+                    const total = baseCost + tax;
+                    
+                    document.getElementById('paySubtotal').innerText = '₹' + baseCost.toFixed(2);
+                    document.getElementById('payTax').innerText = '₹' + tax.toFixed(2);
+                    document.getElementById('payTotal').innerText = '₹' + total.toFixed(2);
+                    
+                    document.getElementById('payBtn').disabled = false;
+                } else {
+                    document.getElementById('loadingSummary').innerHTML = '<p class="text-red-500 font-bold">Booking not found.</p>';
+                }
+            } else {
+                document.getElementById('loadingSummary').innerHTML = '<p class="text-red-500 font-bold">Invalid Repair ID.</p>';
+            }
+
+            // Payment Methods Toggle
+            const radios = document.querySelectorAll('input[name="payMethod"]');
+            radios.forEach(radio => {
+                radio.addEventListener('change', (e) => {
+                    // Reset styling
+                    document.querySelectorAll('label').forEach(l => {
+                        if(l.querySelector('input[name="payMethod"]')) {
+                            l.classList.remove('border-primary', 'bg-card');
+                            l.classList.add('border-slate-200', 'bg-dark');
+                            l.querySelector('.check-icon').classList.add('hidden');
+                        }
+                    });
+                    
+                    // Active styling
+                    const parent = e.target.parentElement;
+                    parent.classList.add('border-primary', 'bg-card');
+                    parent.classList.remove('border-slate-200', 'bg-dark');
+                    parent.querySelector('.check-icon').classList.remove('hidden');
+                    
+                    if (e.target.value === 'Card') {
+                        document.getElementById('upiDetails').classList.add('hidden');
+                        document.getElementById('cardDetails').classList.remove('hidden');
+                    } else {
+                        document.getElementById('cardDetails').classList.add('hidden');
+                        document.getElementById('upiDetails').classList.remove('hidden');
+                    }
+                });
+            });
+
+            // Handle Submit
+            document.getElementById('paymentForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const btn = document.getElementById('payBtn');
+                btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Processing...';
+                btn.disabled = true;
+                
+                setTimeout(() => {
+                    if (repairId) {
+                        const bookingData = JSON.parse(localStorage.getItem(repairId));
+                        bookingData.paymentStatus = 'Paid';
+                        localStorage.setItem(repairId, JSON.stringify(bookingData));
+                    }
+                    document.getElementById('paymentSuccess').classList.remove('hidden');
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+</html>

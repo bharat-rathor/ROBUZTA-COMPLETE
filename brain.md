@@ -1,0 +1,74 @@
+# REPAIRE Tech Labs (Robuzta) - Brain & Knowledge Base
+
+This file serves as the central brain and knowledge repository for the **REPAIRE Tech Labs** (formerly Robuzta) platform. It contains an A-to-Z breakdown of the project architecture, design system, functionality, and company history.
+
+---
+
+## 1. Project Overview
+- **Project Name:** REPAIRE Tech Labs (Robuzta)
+- **Domain:** Premium Electronics & Multi-Device Repair Service
+- **Type:** Frontend Single Page/Multi-Page Web Application
+- **Core Goal:** Provide a premium, high-fidelity user experience for customers booking repairs, tracking devices, and exploring services.
+
+## 2. Technology Stack
+- **Structure:** Vanilla HTML5
+- **Styling:** Tailwind CSS (via CDN)
+- **Interactivity:** Vanilla JavaScript (ES6)
+- **Icons:** FontAwesome 6 (Free versions: e.g., `fa-shield-halved`)
+- **Animations:** AOS (Animate On Scroll)
+- **Local Server:** Recommended to run via `http-server` or `Live Server` due to strict CORS/origin policies on external assets (like YouTube iframe embeds).
+
+## 3. Design System & Aesthetics
+- **Theme:** Clean, modern, light-theme with premium glassmorphism elements.
+- **Color Palette (Tailwind Config):**
+  - `primary`: `#0369a1` (Robuzta Blue - deep, trustworthy)
+  - `secondary`: `#0ea5e9` (Lighter Blue - energetic accents)
+  - `dark`: `#ffffff` (Main Background)
+  - `card`: `#f8fafc` (Slate 50 - Card Backgrounds)
+  - `success`: `#10B981` (Green for success states)
+- **Typography:**
+  - `sans`: Inter (Body text)
+  - `heading`: Poppins (Headers, aggressive/bold branding)
+- **UI Details:** Soft shadows (`shadow-[0_0_15px_rgba...]`), rounded corners (`rounded-xl`, `rounded-2xl`, `rounded-3xl`), border outlines (`border-slate-200`).
+
+## 4. Platform Pages (A to Z)
+1. **`about.html`**: Contains the massive video presentation, "Our Story", and company mission.
+2. **`about_section_snippet.html`**: A reusable snippet used for the homepage containing a brief "Who We Are" and embedded story video.
+3. **`blog.html`**: Articles and repair tips.
+4. **`booking.html`**: Core engine for users to book a repair service.
+5. **`contact.html`**: Features a premium dual-map layout showing branch locations (using `max-w-5xl` constraints for optimal ultrawide viewing).
+6. **`faq.html`**: Frequently asked questions.
+7. **`gallery.html`**: Visual proof of lab setups and successful repairs.
+8. **`index.html`**: The main landing page featuring a hero slider, AI estimator logic, and quick links.
+9. **`login.html`**: Authentication portal featuring standard login, signup, password reset, and functional **Google / Facebook** social auth integration (original multi-colored SVG logos).
+10. **`payment.html`**: Payment gateway UI.
+11. **`pricing.html`**: Transparent pricing models.
+12. **`profile.html`**: User dashboard for managing ongoing repairs.
+13. **`services.html`**: Details on mobile, laptop, PC, and data recovery services.
+14. **`terms.html`**: Legal policies.
+15. **`testimonials_*.html`**: User reviews and trust-building slider blocks.
+16. **`tracking.html`**: Order/repair tracking interface.
+
+## 5. Core Functionality & Scripts (`/js`)
+- **`auth.js`**: Handles session management and frontend local storage authentication.
+- **`chatbot.js`**: Automated customer support UI script.
+- **`cursor.js`**: Custom interactive cursor (Currently disabled/removed to keep the UI clean and professional based on user request).
+- **`search.js`**: Global site search toggle.
+- **`theme.js`**: Dark/Light mode and theme management logic.
+- **Social Login:** Simulated frontend login via Google/Facebook that automatically logs users in and redirects them to `index.html`.
+- **YouTube Embeds:** Specifically modified to bypass `strict-origin-when-cross-origin` restrictions.
+
+## 6. Our Story (Company History)
+- **2012:** Began as a passion for understanding how gadgets function.
+- **2014:** Launched **Axiom Technologies** as a multi-brand repair shop.
+- **2020 (Pandemic):** Expanded aggressively from mobile phones into laptops, tablets, and gaming PCs due to work-from-home demand.
+- **2021:** Rebranded to **Robuzta Techlabs** (Robust + Techlabs) ensuring precision, strength, and transparency.
+- **Present:** A full-service repair network with a dedicated laboratory, highly skilled engineers, strict parts verification, and a no-compromise warranty policy.
+
+## 7. Known Issues / Resolved Bugs
+- **Error 153 (YouTube):** Resolved. Occurs when trying to play YouTube embedded videos via local `file:///` protocol. **Fix:** Use a local web server (like localhost:8080) for development.
+- **FontAwesome Pro Icons:** Resolved. Initial code used premium icons (e.g., `fa-shield-check`) which failed to render. Swapped globally to standard free icons (`fa-shield-halved`).
+- **Map Full-Width Bug:** Resolved. Contact page maps were stretching indefinitely on large monitors. Added `max-w-5xl mx-auto` to constrain the layout gracefully.
+
+---
+*Generated by Antigravity AI - Keep this file updated as the project evolves.*

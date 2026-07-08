@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="About TechFix Pro - Premium Electronics Repair Services.">
+    <title>About Us | REPAIRE</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Libraries CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0369a1', // Robuzta Blue
+                        secondary: '#0ea5e9', // Lighter Blue
+                        dark: '#ffffff', // White
+                        card: '#f8fafc', // Slate 50
+                        success: '#10B981',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-dark text-slate-900 font-sans antialiased overflow-x-hidden selection:bg-primary selection:text-slate-900">
+
+    <!-- Sticky Header -->
+    <header id="header" class="fixed w-full top-0 z-50 transition-all duration-300 bg-dark/80 backdrop-blur-md border-b border-slate-200 py-4 shadow-lg">
+        <div class="w-full px-6 lg:px-12 flex items-center justify-between">
+                        <a href="index.html" class="flex flex-col items-start justify-center group cursor-pointer hover:opacity-90 transition-opacity scale-90 origin-left">
+                <div class="text-[32px] font-black tracking-[-0.05em] leading-none uppercase font-heading text-slate-900 flex items-center">
+                    REPAI<span class="text-primary relative mx-[1px] inline-block">
+                        R
+                        <span class="absolute top-[8px] left-0 w-full h-[2.5px] bg-white z-10"></span>
+                        <span class="absolute bottom-[10px] left-0 w-full h-[2.5px] bg-white z-10"></span>
+                    </span>E
+                </div>
+                <div class="flex mt-0.5 ml-1 -skew-x-[15deg] text-[9px] font-bold tracking-[0.15em] uppercase overflow-hidden shadow-sm">
+                    <div class="bg-primary text-white px-2 py-0.5 pl-2.5">TECH</div>
+                    <div class="bg-slate-900 text-white px-2 py-0.5 pr-2.5">LABS</div>
+                </div>
+            </a>
+
+            <nav class="hidden lg:flex items-center gap-8 font-medium">
+                <a href="index.html" class="hover:text-primary transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Home</a>
+                <a href="services.html" class="hover:text-primary transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Services</a>
+                <a href="about.html" class="hover:text-primary transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">About Us</a>
+                <a href="pricing.html" class="hover:text-primary transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Pricing</a>
+                <a href="tracking.html" class="hover:text-primary transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Tracking</a>
+                <a href="contact.html" class="hover:text-primary transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Contact</a>
+            </nav>
+
+                        <!-- Actions -->
+            <div class="hidden lg:flex items-center gap-4">
+                <button class="text-slate-900/80 hover:text-slate-900 transition-colors" aria-label="Toggle Search">
+                    <i class="fa-solid fa-search text-lg"></i>
+                </button>
+                <div class="w-px h-6 bg-slate-200"></div>
+                <a href="booking.html" class="px-6 py-2.5 rounded-full bg-primary hover:bg-primary/90 font-medium text-white transition-all shadow-[0_0_15px_rgba(3,105,161,0.4)] hover:shadow-[0_0_25px_rgba(3,105,161,0.6)] flex items-center gap-2 transform hover:-translate-y-0.5">
+                    <span>Book Repair</span>
+                    <i class="fa-solid fa-arrow-right text-sm"></i>
+                </a>
+            </div>
+            
+            <!-- Mobile Menu Toggle --><!-- Mobile Menu Toggle -->
+            <button class="lg:hidden text-2xl text-slate-900/80 hover:text-slate-900 ml-4" aria-label="Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="pt-24">
+        <!-- Page Header -->
+        <section class="py-20 relative overflow-hidden bg-card border-b border-slate-100">
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-primary/10 rounded-full blur-[100px] -z-10"></div>
+            <div class="container mx-auto px-6 text-center z-10 relative">
+                <h1 class="text-5xl font-bold font-heading mb-4" data-aos="fade-up">About REPAIRE</h1>
+                <p class="text-slate-900/60 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+                    We are dedicated to providing the highest quality, most reliable, and fastest electronics repair services in the industry.
+                </p>
+            </div>
+        </section>
+
+        <!-- Comprehensive About Section -->
+        <section class="py-24 bg-white relative z-10 border-b border-slate-100">
+            <div class="container mx-auto px-6 max-w-7xl">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    
+                    <!-- Left: About & Expertise -->
+                    <div data-aos="fade-right">
+                        <span class="text-primary font-bold tracking-widest uppercase text-xs mb-2 block">Who We Are</span>
+                        <h2 class="text-4xl md:text-[2.75rem] font-bold text-slate-800 mb-6 leading-tight font-heading tracking-tight">About Robuzta</h2>
+                        <p class="text-slate-600 text-[15px] leading-relaxed mb-6 font-medium">
+                            Robuzta is a multi-device repair centre built to make electronics care easy, fast, and trustworthy. We repair smartphones, tablets, laptops, and desktop computers using genuine parts, transparent pricing, and a customer-first process. Our mission is simple: return your device in top working order — quickly and without surprises.
+                        </p>
+                        
+                        <h3 class="text-2xl font-bold text-slate-800 mb-4 mt-10 font-heading">Our Expertise</h3>
+                        <p class="text-slate-600 text-[15px] leading-relaxed font-medium mb-8">
+                            We service the full spectrum of consumer devices — from everyday Android phones and iPhones to MacBooks, Microsoft Surface devices, Windows laptops, tablets, and desktop PCs. Our technicians are trained to handle everything from simple screen and battery replacements to motherboard-level diagnostics and data recovery. This multi-brand, multi-device approach is at the core of what we do.
+                        </p>
+                    </div>
+                    
+                    <!-- Right: What Sets Us Apart -->
+                    <div data-aos="fade-left" class="bg-card border border-slate-100 rounded-[2rem] p-8 shadow-[0_20px_60px_rgba(0,0,0,0.05)] relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-[80px] -z-10 translate-x-1/2 -translate-y-1/2"></div>
+                        
+                        <h3 class="text-2xl font-bold text-slate-800 mb-8 font-heading flex items-center gap-3">
+                            <i class="fa-solid fa-award text-primary"></i> What Sets Us Apart
+                        </h3>
+                        
+                        <ul class="space-y-6">
+                            <li class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 shadow-sm"><i class="fa-solid fa-user-check text-sm"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-slate-800 text-[15px] mb-1">Certified & Experienced Technicians</h4>
+                                    <p class="text-slate-500 text-sm leading-relaxed font-medium">Our team follows proven repair procedures and quality checks so repairs are done right the first time.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 shadow-sm"><i class="fa-solid fa-shield-halved text-sm"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-slate-800 text-[15px] mb-1">Genuine Parts with Warranty</h4>
+                                    <p class="text-slate-500 text-sm leading-relaxed font-medium">We use verified parts and back repairs with an assurance of quality so you can have peace of mind.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-purple-50 text-purple-600 flex items-center justify-center shrink-0 shadow-sm"><i class="fa-solid fa-truck-fast text-sm"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-slate-800 text-[15px] mb-1">Free Pickup & Delivery</h4>
+                                    <p class="text-slate-500 text-sm leading-relaxed font-medium">If you prefer not to visit the store, we’ll collect, repair and return your device safely.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-orange-50 text-orange-600 flex items-center justify-center shrink-0 shadow-sm"><i class="fa-solid fa-lock text-sm"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-slate-800 text-[15px] mb-1">Data Safety & Transparency</h4>
+                                    <p class="text-slate-500 text-sm leading-relaxed font-medium">We never ask for passwords or OTPs. Any testing that requires your device access is done in your presence.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Story Section -->
+        <section class="py-24 bg-card relative z-10 border-b border-slate-100">
+            <!-- Massive Video Section -->
+            <div class="container mx-auto px-6 mb-16">
+                <div class="max-w-5xl mx-auto rounded-2xl overflow-hidden shadow-xl border border-slate-200 aspect-video bg-slate-900 relative z-20" data-aos="fade-up">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/itYW-9td0RQ?si=LKMaN4dI5Fte51Pq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="w-full h-full"></iframe>
+                </div>
+            </div>
+
+            <div class="container mx-auto px-6 max-w-4xl">
+                <div class="text-left mb-8" data-aos="fade-up">
+                    <h2 class="text-[2.25rem] font-bold text-[#14294a] font-heading tracking-tight">Our Story</h2>
+                </div>
+                
+                <div class="space-y-6 text-[15px] text-slate-600 leading-[1.8] font-medium" data-aos="fade-up" data-aos-delay="100">
+                    <p>Robuzta began with a simple curiosity: how do gadgets really work — and how can they be repaired better?</p>
+                    <p>The journey started in 2012 with hands-on experiments on early smartphones, driven by a deep curiosity for how devices function. This passion soon transformed into professional training, mastering diagnostics, repair processes, and quality standards.</p>
+                    <p>By 2014, the first venture — <strong class="text-slate-800">Axiom Technologies</strong> — was launched, a multi-brand repair shop designed as a one-stop solution for smartphone users. Over the years, thousands of repairs built both technical mastery and a reputation for transparent, reliable service.</p>
+                    <p>When the pandemic reshaped how people lived and worked in 2020, the demand for laptops and tablets surged. Rising to the challenge, the team quickly expanded beyond mobiles into laptops, tablets, desktops, and more, adapting to the new digital-first lifestyle.</p>
+                    <p>In 2021, the brand evolved into <strong class="text-primary font-bold">Robuzta Techlabs</strong> — a name inspired by “robust,” symbolizing strength and reliability, and “Techlabs,” reflecting a commitment to precision and innovation. Today, Robuzta is a full-service, multi-brand repair network covering smartphones, laptops, tablets, smartwatches, AIO systems, and gaming PCs.</p>
+                    <p>With multiple service centres, a dedicated laboratory, and a team of skilled engineers, Robuzta combines modern tools, strict parts verification, and rigorous quality checks.</p>
+                    <p>Over a decade of hands-on experience has shaped one guiding principle: <strong class="text-slate-800 italic">repair with care, accuracy, and transparency.</strong> Every repair is backed by genuine parts, clear estimates, and warranty-protected service.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Founder Section -->
+        <section class="pt-24 pb-24 bg-white relative z-10 border-t border-slate-100">
+            <div class="container mx-auto px-6 max-w-6xl">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-12">
+                    <div class="md:w-1/2" data-aos="fade-right">
+                        <h2 class="text-4xl md:text-[2.75rem] font-bold text-slate-800 mb-3 leading-tight tracking-tight font-heading">Meet Our Young Founder</h2>
+                        <p class="text-slate-500 font-medium text-lg">Robuzta Hai Na!</p>
+                    </div>
+                    <div class="md:w-1/2 flex justify-end" data-aos="fade-left">
+                        <div class="w-full max-w-[450px] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 group border border-slate-200 bg-slate-50 relative cursor-pointer">
+                            <img src="https://robuzta.com/wp-content/uploads/2026/02/Mr.-Pranshu-Maheshwari.png" alt="Mr. Pranshu Maheshwari - Founder" class="w-full h-auto object-cover transform group-hover:scale-110 transition-transform duration-700 ease-out">
+                            <!-- Hover Overlay -->
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
+                                <div class="transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500">
+                                    <h2 class="jet-images-layout__title text-white font-bold text-3xl font-heading mb-1 drop-shadow-md">Mr. Pranshu Maheshwari</h2>
+                                    <p class="text-primary font-semibold text-lg tracking-wide uppercase drop-shadow-sm">CEO & Founder</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+</main>
+    <!-- Footer -->
+    <footer class="bg-card border-t border-slate-200 pt-20 pb-10">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <div>
+                    <a href="#" class="flex flex-col items-start justify-center group cursor-pointer hover:opacity-90 transition-opacity scale-75 origin-left mb-6">
+                        <div class="text-[32px] font-black tracking-[-0.05em] leading-none uppercase font-heading text-slate-900 flex items-center">
+                            REPAI<span class="text-primary relative mx-[1px] inline-block">
+                                R
+                                <span class="absolute top-[8px] left-0 w-full h-[2.5px] bg-card z-10"></span>
+                                <span class="absolute bottom-[10px] left-0 w-full h-[2.5px] bg-card z-10"></span>
+                            </span>E
+                        </div>
+                        <div class="flex mt-0.5 ml-1 -skew-x-[15deg] text-[9px] font-bold tracking-[0.15em] uppercase overflow-hidden shadow-sm">
+                            <div class="bg-primary text-white px-2 py-0.5 pl-2.5">TECH</div>
+                            <div class="bg-slate-900 text-white px-2 py-0.5 pr-2.5">LABS</div>
+                        </div>
+                    </a>
+                    <p class="text-slate-900/60 text-sm leading-relaxed mb-6">
+                        Premium electronics repair services with a focus on quality, speed, and customer satisfaction. We bring your devices back to life.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="https://www.facebook.com/robuztatechlabs/" target="_blank" class="w-10 h-10 rounded-full bg-dark border border-slate-200 flex items-center justify-center text-slate-900/70 hover:text-slate-900 hover:border-primary transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/robuztatechlabs/" target="_blank" class="w-10 h-10 rounded-full bg-dark border border-slate-200 flex items-center justify-center text-slate-900/70 hover:text-slate-900 hover:border-primary transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://in.linkedin.com/company/robuzta-techlabs" target="_blank" class="w-10 h-10 rounded-full bg-dark border border-slate-200 flex items-center justify-center text-slate-900/70 hover:text-slate-900 hover:border-primary transition-colors"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://www.youtube.com/@robuztatechlabs" target="_blank" class="w-10 h-10 rounded-full bg-dark border border-slate-200 flex items-center justify-center text-slate-900/70 hover:text-slate-900 hover:border-primary transition-colors"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-6">Our Services</h4>
+                    <ul class="space-y-3 text-sm text-slate-900/60">
+                        <li><a href="services.html#mobile-repair" class="hover:text-primary transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Mobile Repair</a></li>
+                        <li><a href="services.html#laptop-repair" class="hover:text-primary transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Laptop & MacBook</a></li>
+                        <li><a href="services.html#pc-repair" class="hover:text-primary transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">PC & Gaming Setup</a></li>
+                        <li><a href="services.html" class="hover:text-primary transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Data Recovery</a></li>
+                        <li><a href="services.html" class="hover:text-primary transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Smartwatch Repair</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-6">Quick Links</h4>
+                    <ul class="space-y-3 text-sm text-slate-900/60">
+                        <li><a href="#" class="hover:text-primary transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">About Us</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Track Repair</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Pricing Calculator</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Book a Service</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Contact Support</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-6">Contact Us</h4>
+                    <ul class="space-y-4 text-sm text-slate-900/60">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot mt-1 text-primary"></i>
+                            <span>103, First Floor, Sun South Winds, Safal Parisar Road, South Bopal, Ahmedabad, Gujarat 380058</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-phone text-primary"></i>
+                            <span>+91 999 245 2459</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-envelope text-primary"></i>
+                            <span>info@REPAIRE.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-slate-200 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-slate-900/50">
+                <p>&copy; 2026 REPAIRE. All rights reserved.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-slate-900 transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-slate-900 after:transition-all hover:after:w-full">Privacy Policy</a>
+                    <a href="#" class="hover:text-slate-900 transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-slate-900 after:transition-all hover:after:w-full">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <!-- Typewriter Effect Library -->
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+    <!-- AOS Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Vanilla Tilt -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/cursor.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/chatbot.js"></script>
+    <!-- Inline Initializations -->
+    <script>
+        // Init AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+
+        // Init Vanilla Tilt
+        VanillaTilt.init(document.querySelectorAll(".group.bg-card"), {
+            max: 5,
+            speed: 400,
+            glare: true,
+            "max-glare": 0.1,
+        });
+
+        // Initialize Background Swiper Slider
+        if (typeof Swiper !== 'undefined') {
+            const bgSwiper = new Swiper('.bg-slider', {
+                loop: true,
+                effect: 'fade',
+                fadeEffect: {
+                    crossFade: true
+                },
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: false
+                },
+                pagination: {
+                    el: '.bg-slider-pagination',
+                    clickable: true,
+                    renderBullet: function (index, className) {
+                        const bgImages = [
+                            'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=400&q=80',
+                            'https://images.unsplash.com/photo-1588508065123-287b28e013da?auto=format&fit=crop&w=400&q=80',
+                            'https://images.unsplash.com/photo-1624705002806-5d72df19c3ad?auto=format&fit=crop&w=400&q=80',
+                            'https://images.unsplash.com/photo-1588702547923-70659a200f58?auto=format&fit=crop&w=400&q=80'
+                        ];
+                        return '<span class="' + className + '" style="background-image:url(' + bgImages[index] + ');"></span>';
+                    },
+                },
+                navigation: {
+                    nextEl: '.bg-slider-next',
+                    prevEl: '.bg-slider-prev',
+                },
+                allowTouchMove: true
+            });
+
+            // Initialize Floating Card Slider
+            const cardSwiper = new Swiper('.card-slider', {
+                loop: true,
+                effect: 'fade',
+                fadeEffect: {
+                    crossFade: true
+                },
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: true,
+                    pauseOnMouseEnter: true
+                },
+                pagination: {
+                    el: '.card-slider .swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-next-card',
+                    prevEl: '.swiper-prev-card',
+                },
+                keyboard: {
+                    enabled: true,
+                }
+            });
+        }
+
+        // GSAP Advanced Animations
+        gsap.registerPlugin(ScrollTrigger);
+        
+        // Hero Parallax Setup
+        gsap.to(".animate-float", {
+            yPercent: 20,
+            ease: "none",
+            scrollTrigger: {
+                trigger: "#home",
+                start: "top top",
+                end: "bottom top",
+                scrub: true
+            }
+        });
+
+        // Header Scroll Effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                header.classList.add('shadow-lg');
+                header.classList.replace('py-4', 'py-3');
+            } else {
+                header.classList.remove('shadow-lg');
+                header.classList.replace('py-3', 'py-4');
+            }
+        });
+
+        // Typed.js initialization
+        if (document.getElementById('typed-element')) {
+            new Typed('#typed-element', {
+                strings: ['Smartphones', 'Laptops', 'Gaming PCs', 'MacBooks', 'Tablets'],
+                typeSpeed: 80,
+                backSpeed: 50,
+                backDelay: 1500,
+                loop: true
+            });
+        }
+    </script>
+    
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/919992452459" target="_blank" class="fixed bottom-6 right-6 z-[100] w-14 h-14 rounded-full bg-[#25D366] flex items-center justify-center text-white text-3xl shadow-[0_10px_25px_rgba(37,211,102,0.4)] hover:scale-110 transition-transform cursor-pointer">
+        <i class="fa-brands fa-whatsapp"></i>
+        <span class="absolute top-0 right-0 w-3.5 h-3.5 bg-red-500 rounded-full border-2 border-white"></span>
+    </a>
+<script src="js/auth.js"></script>
+</body>
+</html>

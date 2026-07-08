@@ -1,0 +1,653 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile & Payments | REPAIRE</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0369a1', // Robuzta Blue
+                        secondary: '#0ea5e9', // Lighter Blue
+                        dark: '#ffffff', // White
+                        card: '#f8fafc', // Slate 50
+                        success: '#10B981',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+        /* Card Flip & Tilt Effects */
+        .credit-card {
+            perspective: 1000px;
+            transition: all 0.5s ease;
+        }
+        .credit-card-inner {
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        .credit-card.flipped .credit-card-inner {
+            transform: rotateY(180deg);
+        }
+        .credit-card-front, .credit-card-back {
+            backface-visibility: hidden;
+        }
+        .credit-card-back {
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+<body class="bg-dark text-slate-900 font-sans antialiased overflow-x-hidden selection:bg-primary selection:text-slate-900">
+
+    <!-- Header -->
+    <header class="fixed w-full top-0 z-50 bg-dark/80 backdrop-blur-md border-b border-slate-200 py-4 shadow-lg">
+        <div class="w-full px-6 lg:px-12 flex items-center justify-between">
+                        <a href="index.html" class="flex flex-col items-start justify-center group cursor-pointer hover:opacity-90 transition-opacity scale-90 origin-left">
+                <div class="text-[32px] font-black tracking-[-0.05em] leading-none uppercase font-heading text-slate-900 flex items-center">
+                    REPAI<span class="text-primary relative mx-[1px] inline-block">
+                        R
+                        <span class="absolute top-[8px] left-0 w-full h-[2.5px] bg-white z-10"></span>
+                        <span class="absolute bottom-[10px] left-0 w-full h-[2.5px] bg-white z-10"></span>
+                    </span>E
+                </div>
+                <div class="flex mt-0.5 ml-1 -skew-x-[15deg] text-[9px] font-bold tracking-[0.15em] uppercase overflow-hidden shadow-sm">
+                    <div class="bg-primary text-white px-2 py-0.5 pl-2.5">TECH</div>
+                    <div class="bg-slate-900 text-white px-2 py-0.5 pr-2.5">LABS</div>
+                </div>
+            </a>
+
+            <nav class="hidden lg:flex items-center gap-8 font-medium">
+                <a href="index.html" class="hover:text-primary transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Home</a>
+                <a href="services.html" class="hover:text-primary transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Services</a>
+                <a href="about.html" class="hover:text-primary transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">About Us</a>
+                <a href="pricing.html" class="hover:text-primary transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Pricing</a>
+                <a href="tracking.html" class="hover:text-primary transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Tracking</a>
+                <a href="contact.html" class="hover:text-primary transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Contact</a>
+            </nav>
+
+            <div class="hidden lg:flex items-center gap-4">
+                <a href="booking.html" class="px-6 py-2.5 rounded-full bg-primary hover:bg-primary/90 font-medium text-white transition-all shadow-[0_0_15px_rgba(3,105,161,0.4)]">
+                    Book Repair
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="pt-32 pb-24 min-h-screen">
+        <div class="container mx-auto px-6">
+            
+            <!-- User Welcome Info Section -->
+            <div id="profile-container" class="hidden">
+                <div class="grid lg:grid-cols-12 gap-8 items-start mb-12">
+                    
+                    <!-- Profile Card -->
+                    <div class="lg:col-span-4 bg-card border border-slate-100 rounded-2xl p-8 relative overflow-hidden" data-aos="fade-right">
+                        <div class="absolute -top-16 -right-16 w-36 h-36 bg-primary/10 rounded-full blur-2xl"></div>
+                        <div class="flex flex-col items-center text-center">
+                            <div class="w-24 h-24 rounded-full bg-gradient-to-tr from-primary to-secondary flex items-center justify-center text-3xl font-extrabold text-slate-900 mb-4 border-2 border-slate-200 shadow-lg" id="profile-avatar">
+                                U
+                            </div>
+                            <h2 class="text-2xl font-bold font-heading mb-1 text-slate-900" id="profile-name">User Name</h2>
+                            <p class="text-sm text-slate-900/50 mb-6" id="profile-email">user@example.com</p>
+                            
+                            <div class="w-full border-t border-slate-100 pt-6 space-y-4 text-left">
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-slate-900/40">Status:</span>
+                                    <span class="font-semibold text-primary flex items-center gap-1.5"><i class="fa-solid fa-crown text-xs"></i> Gold Tier</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-slate-900/40">Registered:</span>
+                                    <span class="font-medium text-slate-900/80">July 2026</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-slate-900/40">Linked Phone:</span>
+                                    <span class="font-medium text-slate-900/80" id="profile-phone">+91 8320641442</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Repairs & Payments Section -->
+                    <div class="lg:col-span-8 space-y-8" data-aos="fade-left">
+                        <div class="bg-card border border-slate-100 rounded-2xl p-8">
+                            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+                                <div>
+                                    <h3 class="text-2xl font-bold font-heading text-slate-900">Your Repairs & Invoices</h3>
+                                    <p class="text-sm text-slate-900/50">Manage active service bookings and finalize unpaid invoices.</p>
+                                </div>
+                                <a href="booking.html" class="px-5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-sm font-semibold transition-all">
+                                    + Book New Repair
+                                </a>
+                            </div>
+
+                            <div class="overflow-x-auto w-full">
+                                <table class="w-full text-left text-sm">
+                                    <thead>
+                                        <tr class="border-b border-slate-100 text-slate-900/40 font-semibold">
+                                            <th class="py-3 px-4">Repair ID</th>
+                                            <th class="py-3 px-4">Device</th>
+                                            <th class="py-3 px-4">Cost</th>
+                                            <th class="py-3 px-4">Status</th>
+                                            <th class="py-3 px-4">Payment</th>
+                                            <th class="py-3 px-4 text-right">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="repairs-table-body" class="divide-y divide-white/5">
+                                        <!-- Dynamically injected repair items -->
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <!-- Empty State -->
+                            <div id="no-repairs-state" class="hidden text-center py-12 space-y-4">
+                                <div class="w-16 h-16 rounded-full bg-slate-100 flex items-center justify-center mx-auto text-slate-900/30 text-2xl">
+                                    <i class="fa-solid fa-receipt"></i>
+                                </div>
+                                <h4 class="text-lg font-semibold">No repair requests found</h4>
+                                <p class="text-sm text-slate-900/50 max-w-sm mx-auto">Book your device for diagnostics or screen repairs to see active billing invoices here.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Logged out Redirect Prompt -->
+            <div id="logged-out-prompt" class="max-w-md mx-auto text-center bg-card border border-slate-100 rounded-2xl p-8 space-y-6 my-12" data-aos="zoom-in">
+                <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto text-primary text-3xl">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+                <h2 class="text-2xl font-bold font-heading">Authentication Required</h2>
+                <p class="text-sm text-slate-900/60">You must sign in to view your repairs, tracking reports, and complete service payments.</p>
+                <a href="login.html" class="block w-full py-3 rounded-xl bg-primary hover:bg-primary/95 text-center font-bold text-slate-900 transition-all shadow-lg shadow-primary/20">
+                    Sign In to Profile
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Secure Payment Modal / Slider Overlay -->
+    <div id="payment-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-dark/90 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300">
+        <div class="relative w-full max-w-3xl bg-card border border-slate-200 rounded-2xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col">
+            <!-- Modal Header -->
+            <div class="flex items-center justify-between p-6 border-b border-slate-200">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-8 h-8 rounded bg-primary/10 flex items-center justify-center text-primary text-sm font-bold border border-primary/20">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3 class="text-lg font-bold font-heading">Secure Checkout Gate</h3>
+                </div>
+                <button id="close-modal-btn" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-900/70 transition-colors">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Modal Content (Scrollable) -->
+            <div class="flex-1 overflow-y-auto p-6 md:p-8 grid md:grid-cols-12 gap-8">
+                
+                <!-- Order Summary -->
+                <div class="md:col-span-5 space-y-6 border-b md:border-b-0 md:border-r border-slate-200 pb-6 md:pb-0 md:pr-8 text-left">
+                    <h4 class="text-sm font-semibold uppercase tracking-wider text-slate-900/40">Invoice Summary</h4>
+                    <div class="space-y-4">
+                        <div>
+                            <span class="text-xs text-slate-900/40 block">Repair ID:</span>
+                            <span class="font-mono font-bold text-slate-900 text-sm" id="pay-repair-id">REP-1234</span>
+                        </div>
+                        <div>
+                            <span class="text-xs text-slate-900/40 block">Device & Issue:</span>
+                            <span class="font-medium text-slate-900 text-sm" id="pay-device-name">iPhone Screen Repair</span>
+                        </div>
+                        <div>
+                            <span class="text-xs text-slate-900/40 block">Client Contact:</span>
+                            <span class="text-slate-900/80 text-xs" id="pay-client-name">John Doe</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-6 border-t border-slate-100">
+                        <span class="text-xs text-slate-900/40 block mb-1">Total Due:</span>
+                        <div class="text-3xl font-extrabold text-primary font-heading" id="pay-cost-value">₹2999.00</div>
+                        <p class="text-[10px] text-slate-900/40 mt-1 flex items-center gap-1"><i class="fa-solid fa-circle-check text-success"></i> 256-bit SSL Secure Encryption</p>
+                    </div>
+                </div>
+
+                <!-- Payment Methods & Processing -->
+                <div class="md:col-span-7 space-y-6">
+                    <h4 class="text-sm font-semibold uppercase tracking-wider text-slate-900/40 text-left">Choose Payment Method</h4>
+                    
+                    <!-- Method Select Tabs -->
+                    <div class="grid grid-cols-3 gap-2">
+                        <button type="button" class="pay-tab-btn active px-3 py-2 text-xs font-semibold rounded-lg bg-primary text-slate-900 border border-primary transition-all flex flex-col items-center justify-center gap-1.5" data-tab="card">
+                            <i class="fa-solid fa-credit-card text-sm"></i>
+                            <span>Card</span>
+                        </button>
+                        <button type="button" class="pay-tab-btn px-3 py-2 text-xs font-semibold rounded-lg bg-slate-100 text-slate-900/60 hover:text-slate-900 border border-slate-100 transition-all flex flex-col items-center justify-center gap-1.5" data-tab="upi">
+                            <i class="fa-solid fa-qrcode text-sm"></i>
+                            <span>UPI App</span>
+                        </button>
+                        <button type="button" class="pay-tab-btn px-3 py-2 text-xs font-semibold rounded-lg bg-slate-100 text-slate-900/60 hover:text-slate-900 border border-slate-100 transition-all flex flex-col items-center justify-center gap-1.5" data-tab="net">
+                            <i class="fa-solid fa-building-columns text-sm"></i>
+                            <span>NetBanking</span>
+                        </button>
+                    </div>
+
+                    <!-- Payment Panels -->
+                    <div class="payment-panels relative min-h-[220px]">
+                        
+                        <!-- Credit Card Form -->
+                        <div id="panel-card" class="payment-panel space-y-4">
+                            <!-- Virtual Credit Card Tilt Widget -->
+                            <div class="credit-card w-full max-w-[320px] h-[180px] mx-auto relative rounded-xl text-slate-900 font-mono shadow-2xl p-5 bg-gradient-to-br from-primary via-red-700 to-black overflow-hidden border border-slate-300 select-none">
+                                <div class="credit-card-inner w-full h-full relative">
+                                    <div class="credit-card-front w-full h-full absolute inset-0 flex flex-col justify-between">
+                                        <div class="flex justify-between items-start">
+                                            <i class="fa-solid fa-microchip text-3xl text-amber-300"></i>
+                                            <span class="font-heading font-extrabold italic text-sm">REPAIRE</span>
+                                        </div>
+                                        <div>
+                                            <div class="text-lg tracking-widest text-slate-900/95" id="vcard-number">â€¢â€¢â€¢â€¢ â€¢â€¢â€¢â€¢ â€¢â€¢â€¢â€¢ â€¢â€¢â€¢â€¢</div>
+                                        </div>
+                                        <div class="flex justify-between text-xs">
+                                            <div>
+                                                <div class="text-[8px] text-slate-900/40 uppercase">Card Holder</div>
+                                                <div class="font-bold tracking-wider" id="vcard-holder">CARDHOLDER NAME</div>
+                                            </div>
+                                            <div>
+                                                <div class="text-[8px] text-slate-900/40 uppercase">Expires</div>
+                                                <div class="font-bold" id="vcard-expiry">MM/YY</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Card Inputs -->
+                            <div class="grid grid-cols-2 gap-4 text-left">
+                                <div class="col-span-2 space-y-1">
+                                    <label class="text-xs text-slate-900/50 font-medium">Card Number</label>
+                                    <input type="text" id="card-num-input" class="w-full bg-dark/60 border border-slate-200 rounded-xl px-4 py-2 text-sm focus:border-primary focus:outline-none transition-colors font-mono" placeholder="4111 2222 3333 4444" maxlength="19">
+                                </div>
+                                <div class="space-y-1">
+                                    <label class="text-xs text-slate-900/50 font-medium">Expiry Date</label>
+                                    <input type="text" id="card-exp-input" class="w-full bg-dark/60 border border-slate-200 rounded-xl px-4 py-2 text-sm focus:border-primary focus:outline-none transition-colors font-mono" placeholder="MM/YY" maxlength="5">
+                                </div>
+                                <div class="space-y-1">
+                                    <label class="text-xs text-slate-900/50 font-medium">CVV</label>
+                                    <input type="password" id="card-cvv-input" class="w-full bg-dark/60 border border-slate-200 rounded-xl px-4 py-2 text-sm focus:border-primary focus:outline-none transition-colors font-mono" placeholder="â€¢â€¢â€¢" maxlength="3">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- UPI panel -->
+                        <div id="panel-upi" class="payment-panel hidden space-y-4 text-center">
+                            <div class="w-36 h-36 bg-white p-2 rounded-xl mx-auto shadow-lg relative border border-slate-300">
+                                <!-- QR Mock -->
+                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=upi://pay?pa=8320641442@upi%26pn=REPAIRETechLabs%26am=149%26cu=INR" alt="UPI QR Code" class="w-full h-full select-none">
+                                <div class="absolute inset-0 border-2 border-primary/40 rounded-xl animate-pulse pointer-events-none"></div>
+                            </div>
+                            <p class="text-xs text-slate-900/60">Scan QR code using GPay, PhonePe, BHIM, or Paytm App.</p>
+                            
+                            <div class="w-full border-t border-slate-100 pt-4 text-left space-y-1">
+                                <label class="text-xs text-slate-900/50 font-medium">Or Enter UPI ID</label>
+                                <div class="flex gap-2">
+                                    <input type="text" id="upi-id-input" class="flex-1 bg-dark/60 border border-slate-200 rounded-xl px-4 py-2 text-sm focus:border-primary focus:outline-none transition-colors" placeholder="username@upi">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Net Banking Panel -->
+                        <div id="panel-net" class="payment-panel hidden space-y-4 text-left">
+                            <label class="text-xs text-slate-900/50 font-medium">Select NetBanking Channel</label>
+                            <select id="bank-select" class="w-full bg-dark/60 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:border-primary focus:outline-none transition-colors">
+                                <option value="">Select Bank Name</option>
+                                <option value="sbi">State Bank of India (SBI)</option>
+                                <option value="hdfc">HDFC Bank</option>
+                                <option value="icici">ICICI Bank</option>
+                                <option value="axis">Axis Bank</option>
+                                <option value="kotak">Kotak Mahindra Bank</option>
+                            </select>
+                            <p class="text-xs text-slate-900/50 leading-relaxed">Selecting a banking partner redirects your session to their secure net banking interface for validation.</p>
+                        </div>
+                    </div>
+
+                    <!-- Payment CTA Action Button -->
+                    <button id="pay-confirm-btn" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-primary to-secondary hover:shadow-[0_0_20px_rgba(230,0,0,0.5)] font-bold text-slate-900 transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-lock text-xs"></i> <span>Proceed to Complete Payment</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Loader Screen (Processing) -->
+            <div id="pay-loader" class="absolute inset-0 bg-dark/95 flex flex-col items-center justify-center gap-4 opacity-0 pointer-events-none transition-opacity duration-300">
+                <div class="w-16 h-16 rounded-full border-4 border-primary/20 border-t-primary animate-spin"></div>
+                <h4 class="text-lg font-bold font-heading">Verifying Bank Credentials...</h4>
+                <p class="text-xs text-slate-900/50">Do not click back button or close browser tab.</p>
+            </div>
+
+            <!-- Success Overlay Screen -->
+            <div id="pay-success-screen" class="absolute inset-0 bg-dark/95 flex flex-col items-center justify-center p-8 text-center gap-6 opacity-0 pointer-events-none transition-opacity duration-300">
+                <div class="w-20 h-20 rounded-full bg-success/15 border-2 border-success/40 flex items-center justify-center text-success text-4xl animate-bounce">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <div class="space-y-2">
+                    <h3 class="text-3xl font-bold font-heading text-slate-900">Payment Received!</h3>
+                    <p class="text-sm text-slate-900/60">Your transaction has been authorized successfully. A receipt was sent to your email.</p>
+                </div>
+                <div class="bg-card border border-slate-100 rounded-xl p-4 w-full max-w-sm text-left text-xs font-mono space-y-2 text-slate-900/70">
+                    <div class="flex justify-between"><span>Trans ID:</span><span>TXN-98472910</span></div>
+                    <div class="flex justify-between"><span>Repair Ref:</span><span id="receipt-repair-id">REP-1234</span></div>
+                    <div class="flex justify-between"><span>Amount Paid:</span><span class="text-success" id="receipt-cost-value">₹2999.00</span></div>
+                </div>
+                <button id="success-close-btn" class="px-8 py-3 rounded-full bg-primary hover:bg-primary/90 text-sm font-bold shadow-lg shadow-primary/20">
+                    Return to Profile
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-card border-t border-slate-200 pt-20 pb-10">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <div>
+                    <a href="index.html" class="flex flex-col items-start justify-center group cursor-pointer hover:opacity-90 transition-opacity scale-75 origin-left mb-6">
+                        <div class="text-[32px] font-black tracking-[-0.05em] leading-none uppercase font-heading text-slate-900 flex items-center">
+                            REPAI<span class="text-primary relative mx-[1px] inline-block">
+                                R
+                                <span class="absolute top-[8px] left-0 w-full h-[2.5px] bg-card z-10"></span>
+                                <span class="absolute bottom-[10px] left-0 w-full h-[2.5px] bg-card z-10"></span>
+                            </span>E
+                        </div>
+                        <div class="flex mt-0.5 ml-1 -skew-x-[15deg] text-[9px] font-bold tracking-[0.15em] uppercase overflow-hidden shadow-sm">
+                            <div class="bg-primary text-white px-2 py-0.5 pl-2.5">TECH</div>
+                            <div class="bg-slate-900 text-white px-2 py-0.5 pr-2.5">LABS</div>
+                        </div>
+                    </a>
+                    <p class="text-slate-900/60 text-sm leading-relaxed mb-6">
+                        Premium electronics repair services with a focus on quality, speed, and customer satisfaction. We bring your devices back to life.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="https://www.facebook.com/robuztatechlabs/" target="_blank" class="w-10 h-10 rounded-full bg-dark border border-slate-200 flex items-center justify-center text-slate-900/70 hover:text-slate-900 hover:border-primary transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/robuztatechlabs/" target="_blank" class="w-10 h-10 rounded-full bg-dark border border-slate-200 flex items-center justify-center text-slate-900/70 hover:text-slate-900 hover:border-primary transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://in.linkedin.com/company/robuzta-techlabs" target="_blank" class="w-10 h-10 rounded-full bg-dark border border-slate-200 flex items-center justify-center text-slate-900/70 hover:text-slate-900 hover:border-primary transition-colors"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://www.youtube.com/@robuztatechlabs" target="_blank" class="w-10 h-10 rounded-full bg-dark border border-slate-200 flex items-center justify-center text-slate-900/70 hover:text-slate-900 hover:border-primary transition-colors"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-6">Our Services</h4>
+                    <ul class="space-y-3 text-sm text-slate-900/60">
+                        <li><a href="services.html" class="hover:text-primary transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Mobile Repair</a></li>
+                        <li><a href="services.html" class="hover:text-primary transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Laptop & MacBook</a></li>
+                        <li><a href="services.html" class="hover:text-primary transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">PC & Gaming Setup</a></li>
+                        <li><a href="services.html" class="hover:text-primary transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Data Recovery</a></li>
+                        <li><a href="services.html" class="hover:text-primary transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Smartwatch Repair</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-6">Quick Links</h4>
+                    <ul class="space-y-3 text-sm text-slate-900/60">
+                        <li><a href="about.html" class="hover:text-primary transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">About Us</a></li>
+                        <li><a href="tracking.html" class="hover:text-primary transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Track Repair</a></li>
+                        <li><a href="pricing.html" class="hover:text-primary transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Pricing Plans</a></li>
+                        <li><a href="booking.html" class="hover:text-primary transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Book a Service</a></li>
+                        <li><a href="contact.html" class="hover:text-primary transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Contact Support</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-6">Contact Us</h4>
+                    <ul class="space-y-4 text-sm text-slate-900/60">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot mt-1 text-primary"></i>
+                            <span>103, First Floor, Sun South Winds, Safal Parisar Road, South Bopal, Ahmedabad, Gujarat 380058</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-phone text-primary"></i>
+                            <span>+91 999 245 2459</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-envelope text-primary"></i>
+                            <span>info@REPAIRE.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-slate-200 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-slate-900/50">
+                <p>&copy; 2026 REPAIRE. All rights reserved.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-slate-900 transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-slate-900 after:transition-all hover:after:w-full">Privacy Policy</a>
+                    <a href="#" class="hover:text-slate-900 transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-slate-900 after:transition-all hover:after:w-full">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/cursor.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/chatbot.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ once: true });
+
+        // Check user session
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            const profileContainer = document.getElementById('profile-container');
+            const loggedOutPrompt = document.getElementById('logged-out-prompt');
+
+            if (currentUser) {
+                profileContainer.classList.remove('hidden');
+                loggedOutPrompt.classList.add('hidden');
+                
+                // Populate profile details
+                document.getElementById('profile-name').innerText = currentUser.name;
+                document.getElementById('profile-email').innerText = currentUser.email;
+                document.getElementById('profile-avatar').innerText = currentUser.name.charAt(0).toUpperCase();
+                
+                loadUserRepairs();
+            } else {
+                profileContainer.classList.add('hidden');
+                loggedOutPrompt.classList.remove('hidden');
+            }
+        });
+
+        // Load repairs from localStorage
+        function loadUserRepairs() {
+            const tableBody = document.getElementById('repairs-table-body');
+            const noRepairsState = document.getElementById('no-repairs-state');
+            tableBody.innerHTML = '';
+            
+            let repairCount = 0;
+            
+            // Loop through all localStorage items
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                if (key.startsWith('REP-')) {
+                    repairCount++;
+                    const data = JSON.parse(localStorage.getItem(key));
+                    
+                    const tr = document.createElement('tr');
+                    tr.className = 'border-b border-slate-100 hover:bg-white/[0.02] transition-colors';
+                    
+                    const paymentBadge = data.paymentStatus === 'Paid' 
+                        ? '<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-success/10 text-success"><i class="fa-solid fa-circle-check text-[10px]"></i> Paid</span>'
+                        : '<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-primary/10 text-primary"><i class="fa-solid fa-circle-xmark text-[10px]"></i> Unpaid</span>';
+
+                    const actionBtn = data.paymentStatus === 'Paid'
+                        ? `<button class="px-3 py-1 rounded bg-slate-100 border border-slate-200 text-slate-900/50 text-xs font-semibold cursor-not-allowed" disabled>Completed</button>`
+                        : `<button onclick="initiatePayment('${data.repairId}')" class="px-3 py-1 rounded bg-primary hover:bg-primary/90 text-white text-xs font-bold transition-all shadow-[0_0_10px_rgba(3,105,161,0.3)]">Pay Now</button>`;
+
+                    tr.innerHTML = `
+                        <td class="py-4 px-4 font-mono font-bold text-slate-900/80">${data.repairId}</td>
+                        <td class="py-4 px-4">
+                            <div class="font-medium text-slate-900">${data.brand} ${data.device}</div>
+                            <div class="text-xs text-slate-900/40">${data.issue}</div>
+                        </td>
+                        <td class="py-4 px-4 font-semibold text-slate-900/80">${data.cost || '₹1499.00'}</td>
+                        <td class="py-4 px-4">
+                            <span class="inline-block px-2 py-0.5 rounded bg-slate-100 border border-slate-200 text-[11px] font-medium text-slate-900/70">${data.status}</span>
+                        </td>
+                        <td class="py-4 px-4">${paymentBadge}</td>
+                        <td class="py-4 px-4 text-right">${actionBtn}</td>
+                    `;
+                    tableBody.appendChild(tr);
+                }
+            }
+
+            if (repairCount === 0) {
+                noRepairsState.classList.remove('hidden');
+            } else {
+                noRepairsState.classList.add('hidden');
+            }
+        }
+
+        // Payment modal state variables
+        let activeRepairId = null;
+
+        function initiatePayment(repairId) {
+            const data = JSON.parse(localStorage.getItem(repairId));
+            if (!data) return;
+
+            activeRepairId = repairId;
+            
+            // Set details in modal
+            document.getElementById('pay-repair-id').innerText = data.repairId;
+            document.getElementById('pay-device-name').innerText = `${data.brand} ${data.device} (${data.issue})`;
+            document.getElementById('pay-client-name').innerText = data.name || 'REPAIRE Customer';
+            document.getElementById('pay-cost-value').innerText = data.cost || '₹1499.00';
+            
+            // Open modal
+            const modal = document.getElementById('payment-modal');
+            modal.classList.remove('pointer-events-none');
+            modal.classList.replace('opacity-0', 'opacity-100');
+        }
+
+        // Close Modal
+        document.getElementById('close-modal-btn').addEventListener('click', () => {
+            const modal = document.getElementById('payment-modal');
+            modal.classList.replace('opacity-100', 'opacity-0');
+            modal.classList.add('pointer-events-none');
+        });
+
+        // Payment Method Tab Switches
+        const tabBtns = document.querySelectorAll('.pay-tab-btn');
+        const panels = document.querySelectorAll('.payment-panel');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetTab = btn.getAttribute('data-tab');
+                
+                tabBtns.forEach(b => {
+                    b.classList.remove('active', 'bg-primary');
+                    b.classList.add('bg-slate-100');
+                });
+                btn.classList.add('active', 'bg-primary');
+                btn.classList.remove('bg-slate-100');
+
+                panels.forEach(p => p.classList.add('hidden'));
+                document.getElementById(`panel-${targetTab}`).classList.remove('hidden');
+            });
+        });
+
+        // Virtual Credit Card text display synchronization
+        const cardNumInput = document.getElementById('card-num-input');
+        const cardExpInput = document.getElementById('card-exp-input');
+        const cardCvvInput = document.getElementById('card-cvv-input');
+
+        cardNumInput.addEventListener('input', (e) => {
+            // format digits with space
+            let val = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+            let formattedVal = '';
+            for (let i = 0; i < val.length; i++) {
+                if (i > 0 && i % 4 === 0) formattedVal += ' ';
+                formattedVal += val[i];
+            }
+            e.target.value = formattedVal;
+            document.getElementById('vcard-number').innerText = formattedVal || 'â€¢â€¢â€¢â€¢ â€¢â€¢â€¢â€¢ â€¢â€¢â€¢â€¢ â€¢â€¢â€¢â€¢';
+        });
+
+        cardExpInput.addEventListener('input', (e) => {
+            let val = e.target.value.replace(/\//g, '').replace(/[^0-9]/gi, '');
+            if (val.length >= 2) {
+                val = val.substring(0, 2) + '/' + val.substring(2);
+            }
+            e.target.value = val;
+            document.getElementById('vcard-expiry').innerText = val || 'MM/YY';
+        });
+
+        cardCvvInput.addEventListener('focus', () => {
+            document.querySelector('.credit-card').classList.add('flipped');
+        });
+        cardCvvInput.addEventListener('blur', () => {
+            document.querySelector('.credit-card').classList.remove('flipped');
+        });
+
+        // Complete Checkout
+        document.getElementById('pay-confirm-btn').addEventListener('click', () => {
+            if (!activeRepairId) return;
+
+            const loader = document.getElementById('pay-loader');
+            loader.classList.replace('opacity-0', 'opacity-100');
+            loader.classList.remove('pointer-events-none');
+
+            // Simulate server network authorization latency
+            setTimeout(() => {
+                loader.classList.replace('opacity-100', 'opacity-0');
+                loader.classList.add('pointer-events-none');
+
+                // Update localStorage values
+                const data = JSON.parse(localStorage.getItem(activeRepairId));
+                data.paymentStatus = 'Paid';
+                localStorage.setItem(activeRepairId, JSON.stringify(data));
+
+                // Populate Receipt summary
+                document.getElementById('receipt-repair-id').innerText = data.repairId;
+                document.getElementById('receipt-cost-value').innerText = data.cost || '₹1499.00';
+
+                // Display success gateway screen
+                const successScreen = document.getElementById('pay-success-screen');
+                successScreen.classList.replace('opacity-0', 'opacity-100');
+                successScreen.classList.remove('pointer-events-none');
+            }, 2500);
+        });
+
+        // Return from success view
+        document.getElementById('success-close-btn').addEventListener('click', () => {
+            const successScreen = document.getElementById('pay-success-screen');
+            const modal = document.getElementById('payment-modal');
+
+            successScreen.classList.replace('opacity-100', 'opacity-0');
+            successScreen.classList.add('pointer-events-none');
+            modal.classList.replace('opacity-100', 'opacity-0');
+            modal.classList.add('pointer-events-none');
+
+            // Reload table
+            loadUserRepairs();
+        });
+    </script>
+<script src="js/auth.js"></script>
+</body>
+</html>

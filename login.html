@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account | REPAIRE</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0369a1', // Robuzta Blue
+                        secondary: '#0ea5e9', // Lighter Blue
+                        dark: '#ffffff', // White
+                        card: '#f8fafc', // Slate 50
+                        success: '#10B981',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-dark text-slate-900 font-sans antialiased overflow-x-hidden selection:bg-primary selection:text-slate-900">
+
+    <header class="fixed w-full top-0 z-50 bg-dark/80 backdrop-blur-md border-b border-slate-200 py-4 shadow-lg">
+        <div class="w-full px-6 lg:px-12 flex items-center justify-between">
+                        <a href="index.html" class="flex flex-col items-start justify-center group cursor-pointer hover:opacity-90 transition-opacity scale-90 origin-left">
+                <div class="text-[32px] font-black tracking-[-0.05em] leading-none uppercase font-heading text-slate-900 flex items-center">
+                    REPAI<span class="text-primary relative mx-[1px] inline-block">
+                        R
+                        <span class="absolute top-[8px] left-0 w-full h-[2.5px] bg-white z-10"></span>
+                        <span class="absolute bottom-[10px] left-0 w-full h-[2.5px] bg-white z-10"></span>
+                    </span>E
+                </div>
+                <div class="flex mt-0.5 ml-1 -skew-x-[15deg] text-[9px] font-bold tracking-[0.15em] uppercase overflow-hidden shadow-sm">
+                    <div class="bg-primary text-white px-2 py-0.5 pl-2.5">TECH</div>
+                    <div class="bg-slate-900 text-white px-2 py-0.5 pr-2.5">LABS</div>
+                </div>
+            </a>
+
+            <nav class="hidden lg:flex items-center gap-8 font-medium">
+                <a href="index.html" class="hover:text-primary transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Home</a>
+                <a href="services.html" class="hover:text-primary transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Services</a>
+                <a href="about.html" class="hover:text-primary transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">About Us</a>
+                <a href="pricing.html" class="hover:text-primary transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Pricing</a>
+                <a href="tracking.html" class="hover:text-primary transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Tracking</a>
+                <a href="contact.html" class="hover:text-primary transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Contact</a>
+            </nav>
+
+                        <!-- Actions -->
+            <div class="hidden lg:flex items-center gap-4">
+                <button class="text-slate-900/80 hover:text-slate-900 transition-colors" aria-label="Toggle Search">
+                    <i class="fa-solid fa-search text-lg"></i>
+                </button>
+                <div class="w-px h-6 bg-slate-200"></div>
+                <a href="booking.html" class="px-6 py-2.5 rounded-full bg-primary hover:bg-primary/90 font-medium text-white transition-all shadow-[0_0_15px_rgba(3,105,161,0.4)] hover:shadow-[0_0_25px_rgba(3,105,161,0.6)] flex items-center gap-2 transform hover:-translate-y-0.5">
+                    <span>Book Repair</span>
+                    <i class="fa-solid fa-arrow-right text-sm"></i>
+                </a>
+            </div>
+            
+            <!-- Mobile Menu Toggle --><!-- Mobile Menu Toggle -->
+            <button class="lg:hidden text-2xl text-slate-900/80 hover:text-slate-900 ml-4" aria-label="Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="min-h-screen flex items-center justify-center pt-32 pb-20 px-6">
+        <div class="w-full max-w-md bg-card border border-slate-200 rounded-2xl overflow-hidden shadow-2xl p-8 backdrop-blur-md" data-aos="fade-up">
+            <!-- Tabs -->
+            <div id="authTabs" class="flex border-b border-slate-200 mb-8">
+                <button id="loginTabBtn" class="flex-1 pb-4 text-center font-bold text-lg border-b-2 border-primary text-slate-900 transition-all">Login</button>
+                <button id="signupTabBtn" class="flex-1 pb-4 text-center font-bold text-lg border-b-2 border-transparent text-slate-900/50 hover:text-slate-900 transition-all">Sign Up</button>
+            </div>
+
+            <!-- Error message container -->
+            <div id="authMessage" class="hidden mb-6 p-4 rounded-xl text-sm font-medium"></div>
+
+            <!-- Login Form -->
+            <form id="loginForm" class="space-y-6">
+                <div>
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-slate-900/60 mb-2">Email Address</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 pl-4 flex items-center text-slate-900/40"><i class="fa-solid fa-envelope"></i></span>
+                        <input type="email" id="loginEmail" required class="w-full bg-dark/50 border border-slate-200 rounded-xl py-3.5 pl-11 pr-4 text-slate-900 focus:outline-none focus:border-primary transition-colors text-sm" placeholder="your@email.com">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-slate-900/60 mb-2">Password</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 pl-4 flex items-center text-slate-900/40"><i class="fa-solid fa-lock"></i></span>
+                        <input type="password" id="loginPassword" required class="w-full bg-dark/50 border border-slate-200 rounded-xl py-3.5 pl-11 pr-12 text-slate-900 focus:outline-none focus:border-primary transition-colors text-sm" placeholder="********">
+                        <button type="button" class="absolute inset-y-0 right-0 pr-4 flex items-center text-slate-900/40 hover:text-primary transition-colors toggle-password">
+                            <i class="fa-solid fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between text-xs">
+                    <label class="flex items-center gap-2 text-slate-900/60 cursor-pointer">
+                        <input type="checkbox" class="rounded bg-dark/50 border-slate-200 text-primary focus:ring-0">
+                        Remember me
+                    </label>
+                    <a href="#" id="forgotPasswordBtn" class="text-primary hover:underline">Forgot Password?</a>
+                </div>
+                <button type="submit" class="w-full py-4 bg-primary hover:bg-primary/90 text-white rounded-xl font-bold transition-all shadow-[0_0_15px_rgba(3,105,161,0.3)]">
+                    Sign In
+                </button>
+                
+                <div class="relative flex items-center py-2">
+                    <div class="flex-grow border-t border-slate-200/50"></div>
+                    <span class="flex-shrink-0 mx-4 text-slate-400 text-xs font-semibold uppercase tracking-wider">Or continue with</span>
+                    <div class="flex-grow border-t border-slate-200/50"></div>
+                </div>
+
+                <div class="flex items-center justify-between gap-3">
+                    <button type="button" onclick="handleSocialLogin('Google')" class="flex-1 flex items-center justify-center gap-2 py-3.5 bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 rounded-xl font-bold transition-all shadow-sm text-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 48 48">
+                            <path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"></path>
+                            <path fill="#FF3D00" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"></path>
+                            <path fill="#4CAF50" d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"></path>
+                            <path fill="#1976D2" d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"></path>
+                        </svg>
+                        <span>Google</span>
+                    </button>
+                    
+                    <span class="text-[10px] font-black text-slate-400 uppercase shrink-0">OR</span>
+                    
+                    <button type="button" onclick="handleSocialLogin('Facebook')" class="flex-1 flex items-center justify-center gap-2 py-3.5 bg-[#1877F2] hover:bg-[#166fe5] text-white rounded-xl font-bold transition-all shadow-sm text-sm">
+                        <i class="fa-brands fa-facebook-f text-base"></i>
+                        <span>Facebook</span>
+                    </button>
+                </div>
+            </form>
+
+            <!-- Signup Form -->
+            <form id="signupForm" class="space-y-6 hidden">
+                <div>
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-slate-900/60 mb-2">Full Name</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 pl-4 flex items-center text-slate-900/40"><i class="fa-solid fa-user"></i></span>
+                        <input type="text" id="signupName" required class="w-full bg-dark/50 border border-slate-200 rounded-xl py-3.5 pl-11 pr-4 text-slate-900 focus:outline-none focus:border-primary transition-colors text-sm" placeholder="John Doe">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-slate-900/60 mb-2">Email Address</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 pl-4 flex items-center text-slate-900/40"><i class="fa-solid fa-envelope"></i></span>
+                        <input type="email" id="signupEmail" required class="w-full bg-dark/50 border border-slate-200 rounded-xl py-3.5 pl-11 pr-4 text-slate-900 focus:outline-none focus:border-primary transition-colors text-sm" placeholder="your@email.com">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-slate-900/60 mb-2">Password</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 pl-4 flex items-center text-slate-900/40"><i class="fa-solid fa-lock"></i></span>
+                        <input type="password" id="signupPassword" required class="w-full bg-dark/50 border border-slate-200 rounded-xl py-3.5 pl-11 pr-12 text-slate-900 focus:outline-none focus:border-primary transition-colors text-sm" placeholder="********">
+                        <button type="button" class="absolute inset-y-0 right-0 pr-4 flex items-center text-slate-900/40 hover:text-primary transition-colors toggle-password">
+                            <i class="fa-solid fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="flex items-center text-xs">
+                    <label class="flex items-center gap-2 text-slate-900/60 cursor-pointer">
+                        <input type="checkbox" required class="rounded bg-dark/50 border-slate-200 text-primary focus:ring-0">
+                        I agree to the <a href="terms.html" target="_blank" class="text-primary hover:underline underline-offset-2">Terms of Service</a>
+                    </label>
+                </div>
+                <button type="submit" class="w-full py-4 bg-primary hover:bg-primary/90 text-white rounded-xl font-bold transition-all shadow-[0_0_15px_rgba(3,105,161,0.3)]">
+                    Create Account
+                </button>
+                
+                <div class="relative flex items-center py-2">
+                    <div class="flex-grow border-t border-slate-200/50"></div>
+                    <span class="flex-shrink-0 mx-4 text-slate-400 text-xs font-semibold uppercase tracking-wider">Or sign up with</span>
+                    <div class="flex-grow border-t border-slate-200/50"></div>
+                </div>
+
+                <div class="flex items-center justify-between gap-3">
+                    <button type="button" onclick="handleSocialLogin('Google')" class="flex-1 flex items-center justify-center gap-2 py-3.5 bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 rounded-xl font-bold transition-all shadow-sm text-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 48 48">
+                            <path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"></path>
+                            <path fill="#FF3D00" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"></path>
+                            <path fill="#4CAF50" d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"></path>
+                            <path fill="#1976D2" d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"></path>
+                        </svg>
+                        <span>Google</span>
+                    </button>
+                    
+                    <span class="text-[10px] font-black text-slate-400 uppercase shrink-0">OR</span>
+                    
+                    <button type="button" onclick="handleSocialLogin('Facebook')" class="flex-1 flex items-center justify-center gap-2 py-3.5 bg-[#1877F2] hover:bg-[#166fe5] text-white rounded-xl font-bold transition-all shadow-sm text-sm">
+                        <i class="fa-brands fa-facebook-f text-base"></i>
+                        <span>Facebook</span>
+                    </button>
+                </div>
+            </form>
+
+            <!-- Forgot Password Form -->
+            <form id="forgotPasswordForm" class="space-y-6 hidden">
+                <div class="text-center mb-6">
+                    <h3 class="text-xl font-bold font-heading mb-2">Reset Password</h3>
+                    <p class="text-sm text-slate-900/60">Enter your email and we'll send you a recovery link.</p>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-slate-900/60 mb-2">Email Address</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 pl-4 flex items-center text-slate-900/40"><i class="fa-solid fa-envelope"></i></span>
+                        <input type="email" id="forgotEmail" required class="w-full bg-dark/50 border border-slate-200 rounded-xl py-3.5 pl-11 pr-4 text-slate-900 focus:outline-none focus:border-primary transition-colors text-sm" placeholder="your@email.com">
+                    </div>
+                </div>
+                <button type="submit" class="w-full py-4 bg-primary hover:bg-primary/90 text-white rounded-xl font-bold transition-all shadow-[0_0_15px_rgba(3,105,161,0.3)]">
+                    Send Recovery Link
+                </button>
+                <div class="text-center mt-4">
+                    <a href="#" id="backToLoginBtn" class="text-sm font-medium text-slate-900/60 hover:text-primary transition-colors"><i class="fa-solid fa-arrow-left mr-1"></i> Back to Login</a>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-card border-t border-slate-200 pt-20 pb-10">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <div>
+                    <a href="index.html" class="flex items-center gap-2 mb-6">
+                        <div class="w-8 h-8 rounded bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-sm font-bold">
+                            <i class="fa-solid fa-shield-halved text-slate-900"></i>
+                        </div>
+                        <span class="font-heading font-bold text-xl">TechFix<span class="text-primary">Pro</span></span>
+                    </a>
+                    <p class="text-slate-900/60 text-sm leading-relaxed mb-6">
+                        Premium electronics repair services with a focus on quality, speed, and customer satisfaction. We bring your devices back to life.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-6">Our Services</h4>
+                    <ul class="space-y-3 text-sm text-slate-900/60">
+                        <li><a href="services.html" class="hover:text-primary transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Mobile Repair</a></li>
+                        <li><a href="services.html" class="hover:text-primary transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Laptop & MacBook</a></li>
+                        <li><a href="services.html" class="hover:text-primary transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">PC & Gaming Setup</a></li>
+                        <li><a href="services.html" class="hover:text-primary transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Data Recovery</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-6">Quick Links</h4>
+                    <ul class="space-y-3 text-sm text-slate-900/60">
+                        <li><a href="about.html" class="hover:text-primary transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">About Us</a></li>
+                        <li><a href="tracking.html" class="hover:text-primary transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Track Repair</a></li>
+                        <li><a href="pricing.html" class="hover:text-primary transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Pricing Plans</a></li>
+                        <li><a href="booking.html" class="hover:text-primary transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Book a Service</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-6">Contact Us</h4>
+                    <ul class="space-y-4 text-sm text-slate-900/60">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot mt-1 text-primary"></i>
+                            <span>123 Tech Avenue, Silicon Valley, CA 94025</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-phone text-primary"></i>
+                            <span>+1 (800) 123-4567</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-slate-200 text-center text-sm text-slate-900/50">
+                <p>&copy; 2026 REPAIRE Tech Labs. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/theme.js"></script>
+    <script src="js/cursor.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/chatbot.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ once: true });
+
+        // Tab toggle logic
+        const authTabs = document.getElementById('authTabs');
+        const loginTab = document.getElementById('loginTabBtn');
+        const signupTab = document.getElementById('signupTabBtn');
+        const loginForm = document.getElementById('loginForm');
+        const signupForm = document.getElementById('signupForm');
+        const forgotPasswordForm = document.getElementById('forgotPasswordForm');
+        const messageDiv = document.getElementById('authMessage');
+
+        loginTab.addEventListener('click', () => {
+            loginTab.classList.replace('border-transparent', 'border-primary');
+            loginTab.classList.remove('text-slate-900/50');
+            signupTab.classList.replace('border-primary', 'border-transparent');
+            signupTab.classList.add('text-slate-900/50');
+            loginForm.classList.remove('hidden');
+            signupForm.classList.add('hidden');
+            forgotPasswordForm.classList.add('hidden');
+            messageDiv.classList.add('hidden');
+        });
+
+        signupTab.addEventListener('click', () => {
+            signupTab.classList.replace('border-transparent', 'border-primary');
+            signupTab.classList.remove('text-slate-900/50');
+            loginTab.classList.replace('border-primary', 'border-transparent');
+            loginTab.classList.add('text-slate-900/50');
+            signupForm.classList.remove('hidden');
+            loginForm.classList.add('hidden');
+            forgotPasswordForm.classList.add('hidden');
+            messageDiv.classList.add('hidden');
+        });
+
+        // Forgot password logic
+        const forgotPasswordBtn = document.getElementById('forgotPasswordBtn');
+        const backToLoginBtn = document.getElementById('backToLoginBtn');
+
+        forgotPasswordBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            authTabs.classList.add('hidden');
+            loginForm.classList.add('hidden');
+            forgotPasswordForm.classList.remove('hidden');
+            messageDiv.classList.add('hidden');
+        });
+
+        backToLoginBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            authTabs.classList.remove('hidden');
+            forgotPasswordForm.classList.add('hidden');
+            loginForm.classList.remove('hidden');
+            messageDiv.classList.add('hidden');
+        });
+
+        forgotPasswordForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            showMessage("A recovery link has been sent to your email address.", true);
+            setTimeout(() => {
+                backToLoginBtn.click();
+            }, 3000);
+        });
+
+        // Password visibility toggle
+        document.querySelectorAll('.toggle-password').forEach(button => {
+            button.addEventListener('click', () => {
+                const input = button.previousElementSibling;
+                const icon = button.querySelector('i');
+                if (input.type === 'password') {
+                    input.type = 'text';
+                    icon.classList.replace('fa-eye', 'fa-eye-slash');
+                } else {
+                    input.type = 'password';
+                    icon.classList.replace('fa-eye-slash', 'fa-eye');
+                }
+            });
+        });
+
+        // Authentication logic simulation via LocalStorage
+        const showMessage = (msg, isSuccess = false) => {
+            messageDiv.innerText = msg;
+            messageDiv.classList.remove('hidden', 'bg-red-500/20', 'text-red-400', 'bg-green-500/20', 'text-green-400');
+            if (isSuccess) {
+                messageDiv.classList.add('bg-green-500/20', 'text-green-400');
+            } else {
+                messageDiv.classList.add('bg-red-500/20', 'text-red-400');
+            }
+        };
+
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value.trim();
+            const pass = document.getElementById('loginPassword').value;
+
+            const users = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+            const user = users.find(u => u.email === email && u.password === pass);
+
+            if (user) {
+                localStorage.setItem('currentUser', JSON.stringify({ email: user.email, name: user.name }));
+                showMessage("Login successful! Redirecting...", true);
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 1500);
+            } else {
+                showMessage("Invalid credentials. Try guest account (guest@techfix.com / password) or Sign Up.");
+                // Create auto guest account for testing convenience
+                if (email === 'guest@techfix.com' && pass === 'password') {
+                    localStorage.setItem('currentUser', JSON.stringify({ email, name: 'Guest User' }));
+                    showMessage("Login successful! Redirecting...", true);
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 1500);
+                }
+            }
+        });
+
+        signupForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('signupName').value.trim();
+            const email = document.getElementById('signupEmail').value.trim();
+            const pass = document.getElementById('signupPassword').value;
+
+            const users = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+            if (users.find(u => u.email === email)) {
+                showMessage("Email already registered!");
+                return;
+            }
+
+            users.push({ name, email, password: pass });
+            localStorage.setItem('registeredUsers', JSON.stringify(users));
+            showMessage("Account created successfully! Switching to Login tab.", true);
+            setTimeout(() => {
+                loginTab.click();
+                document.getElementById('loginEmail').value = email;
+            }, 1500);
+        });
+
+        // Functionally working social login
+        window.handleSocialLogin = (provider) => {
+            messageDiv.classList.remove('hidden');
+            showMessage(`Connecting to ${provider}...`);
+            
+            // Disable buttons during login
+            const buttons = document.querySelectorAll('button[type="button"]');
+            buttons.forEach(b => b.disabled = true);
+            
+            setTimeout(() => {
+                const mockEmail = `${provider.toLowerCase()}@user.com`;
+                const mockName = `${provider} User`;
+                
+                // Add to registered users if not exists (for simulation)
+                const users = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+                if (!users.find(u => u.email === mockEmail)) {
+                    users.push({ name: mockName, email: mockEmail, password: 'social_auth_mock' });
+                    localStorage.setItem('registeredUsers', JSON.stringify(users));
+                }
+
+                // Log user in
+                localStorage.setItem('currentUser', JSON.stringify({ email: mockEmail, name: mockName }));
+                showMessage(`${provider} Login successful! Redirecting...`, true);
+                
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 1500);
+            }, 1000);
+        };
+    </script>
+<script src="js/auth.js"></script>
+</body>
+</html>

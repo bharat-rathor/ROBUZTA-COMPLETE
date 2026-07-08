@@ -1,0 +1,108 @@
+/* Custom CSS beyond Tailwind */
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+::-webkit-scrollbar-thumb {
+  background: #f8fafc;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #0369a1;
+}
+
+/* Glassmorphism Utilities */
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Utilities */
+.text-gradient {
+  background: linear-gradient(to right, #0369a1, #0ea5e9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Hide number input spinners */
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* Premium Swiper Slider Styles */
+.hero-slider .swiper-slide img {
+  transition: transform 6s ease-out;
+}
+.hero-slider .swiper-slide-active img {
+  transform: scale(1.12);
+}
+.hero-slider .swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.4) !important;
+  width: 8px !important;
+  height: 8px !important;
+  opacity: 1 !important;
+  transition: all 0.3s ease !important;
+}
+.hero-slider .swiper-pagination-bullet-active {
+  background: #0369a1 !important;
+  width: 24px !important;
+  border-radius: 4px !important;
+  box-shadow: 0 0 10px rgba(3, 105, 161, 0.8) !important;
+}
+.hero-slider .swiper-button-next,
+.hero-slider .swiper-button-prev {
+  background: rgba(255, 255, 255, 0.6);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+.hero-slider .swiper-button-next::after,
+.hero-slider .swiper-button-prev::after {
+  font-size: 14px !important;
+  font-weight: bold;
+}
+.hero-slider .swiper-button-next:hover,
+.hero-slider .swiper-button-prev:hover {
+  border-color: #0369a1;
+  box-shadow: 0 0 10px rgba(3, 105, 161, 0.4);
+}
+
+/* Brands Infinite Marquee Animation */
+@keyframes infinite-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+.animate-infinite-scroll {
+  animation: infinite-scroll 25s linear infinite;
+}
+
+/* Custom Scrollbar for Our Story text */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #0369a1;
+    border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #0284c7;
+}
+

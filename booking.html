@@ -1,0 +1,474 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Repair | REPAIRE</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0369a1', // Robuzta Blue
+                        secondary: '#0ea5e9', // Lighter Blue
+                        dark: '#ffffff', // White
+                        card: '#f8fafc', // Slate 50
+                        success: '#10B981',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-dark text-slate-900 font-sans antialiased overflow-x-hidden selection:bg-primary selection:text-slate-900">
+
+    <header class="fixed w-full top-0 z-50 bg-dark/80 backdrop-blur-md border-b border-slate-200 py-4 shadow-lg">
+        <div class="w-full px-6 lg:px-12 flex items-center justify-between">
+                        <a href="index.html" class="flex flex-col items-start justify-center group cursor-pointer hover:opacity-90 transition-opacity scale-90 origin-left">
+                <div class="text-[32px] font-black tracking-[-0.05em] leading-none uppercase font-heading text-slate-900 flex items-center">
+                    REPAI<span class="text-primary relative mx-[1px] inline-block">
+                        R
+                        <span class="absolute top-[8px] left-0 w-full h-[2.5px] bg-white z-10"></span>
+                        <span class="absolute bottom-[10px] left-0 w-full h-[2.5px] bg-white z-10"></span>
+                    </span>E
+                </div>
+                <div class="flex mt-0.5 ml-1 -skew-x-[15deg] text-[9px] font-bold tracking-[0.15em] uppercase overflow-hidden shadow-sm">
+                    <div class="bg-primary text-white px-2 py-0.5 pl-2.5">TECH</div>
+                    <div class="bg-slate-900 text-white px-2 py-0.5 pr-2.5">LABS</div>
+                </div>
+            </a>
+
+            <nav class="hidden lg:flex items-center gap-8 font-medium">
+                <a href="index.html" class="hover:text-primary transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Home</a>
+                <a href="services.html" class="hover:text-primary transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Services</a>
+                <a href="about.html" class="hover:text-primary transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">About Us</a>
+                <a href="pricing.html" class="hover:text-primary transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Pricing</a>
+                <a href="tracking.html" class="hover:text-primary transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Tracking</a>
+                <a href="contact.html" class="hover:text-primary transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Contact</a>
+            </nav>
+
+                        <!-- Actions -->
+            <div class="hidden lg:flex items-center gap-4">
+                <button class="text-slate-900/80 hover:text-slate-900 transition-colors" aria-label="Toggle Search">
+                    <i class="fa-solid fa-search text-lg"></i>
+                </button>
+                <div class="w-px h-6 bg-slate-200"></div>
+                <a href="booking.html" class="px-6 py-2.5 rounded-full bg-primary hover:bg-primary/90 font-medium text-white transition-all shadow-[0_0_15px_rgba(3,105,161,0.4)] hover:shadow-[0_0_25px_rgba(3,105,161,0.6)] flex items-center gap-2 transform hover:-translate-y-0.5">
+                    <span>Book Repair</span>
+                    <i class="fa-solid fa-arrow-right text-sm"></i>
+                </a>
+            </div>
+            
+            <!-- Mobile Menu Toggle --><!-- Mobile Menu Toggle -->
+            <button class="lg:hidden text-2xl text-slate-900/80 hover:text-slate-900 ml-4" aria-label="Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="pt-32 pb-24">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h1 class="text-5xl font-bold font-heading mb-4">Book Your Repair</h1>
+                <p class="text-slate-900/60">Schedule an appointment or request a doorstep pickup in just a few clicks.</p>
+            </div>
+            
+            <div class="bg-card border border-slate-200 rounded-3xl p-8 shadow-2xl relative" data-aos="fade-up" data-aos-delay="100">
+                <!-- Progress bar -->
+                <div class="flex justify-between items-center mb-10 relative">
+                    <div class="absolute left-0 top-1/2 -translate-y-1/2 w-full h-1 bg-dark -z-10"></div>
+                    <div id="progressBar" class="absolute left-0 top-1/2 -translate-y-1/2 w-0 h-1 bg-primary transition-all duration-300 -z-10"></div>
+                    
+                    <div class="step-dot w-8 h-8 rounded-full bg-primary flex items-center justify-center font-bold text-sm">1</div>
+                    <div class="step-dot w-8 h-8 rounded-full bg-dark border border-slate-200 flex items-center justify-center font-bold text-sm">2</div>
+                    <div class="step-dot w-8 h-8 rounded-full bg-dark border border-slate-200 flex items-center justify-center font-bold text-sm">3</div>
+                    <div class="step-dot w-8 h-8 rounded-full bg-dark border border-slate-200 flex items-center justify-center font-bold text-sm">4</div>
+                </div>
+                
+                <form id="multiStepBooking" class="space-y-8">
+                    <!-- Step 1: Device Info -->
+                    <div id="bookingStep1" class="booking-step-panel space-y-6">
+                        <h3 class="text-2xl font-bold mb-4">Select Device & Brand</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-slate-900/70 mb-2">Device Type</label>
+                                <select id="deviceType" class="w-full bg-dark border border-slate-200 rounded-xl py-3 px-4 text-slate-900 focus:outline-none focus:border-primary transition-colors" required>
+                                    <option value="">Choose Device</option>
+                                    <option value="Smartphone">Smartphone</option>
+                                    <option value="Laptop">Laptop</option>
+                                    <option value="Desktop PC">Desktop PC</option>
+                                    <option value="Tablet">Tablet</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-slate-900/70 mb-2">Brand</label>
+                                <select id="deviceBrand" class="w-full bg-dark border border-slate-200 rounded-xl py-3 px-4 text-slate-900 focus:outline-none focus:border-primary transition-colors" required disabled>
+                                    <option value="">Choose Brand</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="flex justify-end">
+                            <button type="button" id="next1" class="px-8 py-3 bg-primary hover:bg-primary/90 text-white rounded-xl font-bold transition-colors shadow-[0_0_15px_rgba(3,105,161,0.3)]">Next Step</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 2: Problem Details -->
+                    <div id="bookingStep2" class="booking-step-panel hidden space-y-6">
+                        <h3 class="text-2xl font-bold mb-4">Describe the Issue</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-slate-900/70 mb-2">Select Issue</label>
+                                <select id="deviceIssue" class="w-full bg-dark border border-slate-200 rounded-xl py-3 px-4 text-slate-900 focus:outline-none focus:border-primary transition-colors" required>
+                                    <option value="">Choose Issue</option>
+                                    <option value="Screen Damage">Cracked/Broken Screen</option>
+                                    <option value="Battery Problem">Battery Depletion/Charging Issue</option>
+                                    <option value="Water Damage">Water/Liquid Damage</option>
+                                    <option value="Motherboard Failure">Won't Power On / Motherboard</option>
+                                    <option value="Software Issue">Software/OS Crashing</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-slate-900/70 mb-2">Detailed Description (Optional)</label>
+                                <textarea id="issueDetails" rows="4" class="w-full bg-dark border border-slate-200 rounded-xl py-3 px-4 text-slate-900 focus:outline-none focus:border-primary transition-colors resize-none" placeholder="Provide details about the issue..."></textarea>
+                            </div>
+                        </div>
+                        <div class="flex justify-between">
+                            <button type="button" id="back1" class="px-6 py-3 rounded-xl border border-slate-200 hover:bg-slate-100 transition-colors font-medium">Back</button>
+                            <button type="button" id="next2" class="px-8 py-3 bg-primary hover:bg-primary/90 text-white rounded-xl font-bold transition-colors shadow-[0_0_15px_rgba(3,105,161,0.3)]">Next Step</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 3: Logistics (Pickup / Date & Time) -->
+                    <div id="bookingStep3" class="booking-step-panel hidden space-y-6">
+                        <h3 class="text-2xl font-bold mb-4">Appointment Details</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-slate-900/70 mb-2">Service Mode</label>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <label class="flex flex-col items-center justify-center p-4 bg-dark border border-slate-200 rounded-xl cursor-pointer hover:border-primary/50 transition-colors">
+                                        <input type="radio" name="serviceMode" value="Store Visit" class="mb-2" checked>
+                                        <span class="text-sm font-bold">Store Visit</span>
+                                    </label>
+                                    <label class="flex flex-col items-center justify-center p-4 bg-dark border border-slate-200 rounded-xl cursor-pointer hover:border-primary/50 transition-colors">
+                                        <input type="radio" name="serviceMode" value="Doorstep Pickup" class="mb-2">
+                                        <span class="text-sm font-bold">Free Pickup</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-slate-900/70 mb-2">Date</label>
+                                    <input type="date" id="appointmentDate" class="w-full bg-dark border border-slate-200 rounded-xl py-3 px-4 text-slate-900 focus:outline-none focus:border-primary transition-colors" required>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-slate-900/70 mb-2">Time Slot</label>
+                                    <select id="appointmentTime" class="w-full bg-dark border border-slate-200 rounded-xl py-3 px-4 text-slate-900 focus:outline-none focus:border-primary transition-colors" required>
+                                        <option value="">Select Time</option>
+                                        <option value="09:00 AM - 12:00 PM">09:00 AM - 12:00 PM</option>
+                                        <option value="12:00 PM - 03:00 PM">12:00 PM - 03:00 PM</option>
+                                        <option value="03:00 PM - 06:00 PM">03:00 PM - 06:00 PM</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between">
+                            <button type="button" id="back2" class="px-6 py-3 rounded-xl border border-slate-200 hover:bg-slate-100 transition-colors font-medium">Back</button>
+                            <button type="button" id="next3" class="px-8 py-3 bg-primary hover:bg-primary/90 text-white rounded-xl font-bold transition-colors shadow-[0_0_15px_rgba(3,105,161,0.3)]">Next Step</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 4: Summary & Confirm -->
+                    <div id="bookingStep4" class="booking-step-panel hidden space-y-6">
+                        <h3 class="text-2xl font-bold mb-4">Summary & Estimated Cost</h3>
+                        <div class="bg-dark border border-slate-200 rounded-2xl p-6 space-y-4">
+                            <div class="flex justify-between">
+                                <span class="text-slate-900/50">Device</span>
+                                <span id="summaryDevice" class="font-bold">-</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-slate-900/50">Issue</span>
+                                <span id="summaryIssue" class="font-bold">-</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-slate-900/50">Mode</span>
+                                <span id="summaryMode" class="font-bold">-</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-slate-900/50">Schedule</span>
+                                <span id="summarySchedule" class="font-bold">-</span>
+                            </div>
+                            <div class="border-t border-slate-200 pt-4 flex justify-between items-center">
+                                <span class="text-slate-900/50">Estimated Cost</span>
+                                <span id="summaryCost" class="text-3xl font-bold text-primary font-heading">₹0.00</span>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-slate-900/70 mb-2">Your Name</label>
+                                <input type="text" id="custName" class="w-full bg-dark border border-slate-200 rounded-xl py-3 px-4 text-slate-900 focus:outline-none focus:border-primary transition-colors" placeholder="John Doe" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-slate-900/70 mb-2">Phone Number</label>
+                                <input type="tel" id="custPhone" class="w-full bg-dark border border-slate-200 rounded-xl py-3 px-4 text-slate-900 focus:outline-none focus:border-primary transition-colors" placeholder="+1 (555) 000-0000" required>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-between">
+                            <button type="button" id="back3" class="px-6 py-3 rounded-xl border border-slate-200 hover:bg-slate-100 transition-colors font-medium">Back</button>
+                            <button type="submit" class="px-8 py-3 bg-primary hover:bg-primary/90 text-white rounded-xl font-bold transition-colors shadow-[0_0_15px_rgba(3,105,161,0.3)]">Confirm Booking</button>
+                        </div>
+                    </div>
+                </form>
+                
+                <!-- Success Message -->
+                <div id="bookingSuccess" class="hidden text-center py-12 space-y-6">
+                    <div class="w-20 h-20 bg-success/20 rounded-full flex items-center justify-center text-4xl text-success mx-auto animate-pulse">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                    <h3 class="text-3xl font-bold">Booking Confirmed!</h3>
+                    <p class="text-slate-900/60 max-w-md mx-auto">Your booking has been registered. Your Repair ID is <span id="repairIdVal" class="text-primary font-bold">REP-9876</span>. You can use this ID to track your repair status.</p>
+                    <div class="flex justify-center gap-4">
+                        <a href="tracking.html" class="px-6 py-3 bg-primary hover:bg-primary/90 rounded-xl font-bold transition-all shadow-[0_0_15px_rgba(3,105,161,0.3)]">Track Status</a>
+                        <a href="index.html" class="px-6 py-3 border border-slate-200 hover:bg-slate-100 rounded-xl font-bold transition-all">Go Home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+
+        
+
+
+</main>
+
+    <!-- Footer -->
+    <footer class="bg-card border-t border-slate-200 pt-20 pb-10">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <div>
+                    <a href="index.html" class="flex flex-col items-start justify-center group cursor-pointer hover:opacity-90 transition-opacity scale-75 origin-left mb-6">
+                        <div class="text-[32px] font-black tracking-[-0.05em] leading-none uppercase font-heading text-slate-900 flex items-center">
+                            REPAI<span class="text-primary relative mx-[1px] inline-block">
+                                R
+                                <span class="absolute top-[8px] left-0 w-full h-[2.5px] bg-card z-10"></span>
+                                <span class="absolute bottom-[10px] left-0 w-full h-[2.5px] bg-card z-10"></span>
+                            </span>E
+                        </div>
+                        <div class="flex mt-0.5 ml-1 -skew-x-[15deg] text-[9px] font-bold tracking-[0.15em] uppercase overflow-hidden shadow-sm">
+                            <div class="bg-primary text-white px-2 py-0.5 pl-2.5">TECH</div>
+                            <div class="bg-slate-900 text-white px-2 py-0.5 pr-2.5">LABS</div>
+                        </div>
+                    </a>
+                    <p class="text-slate-900/60 text-sm leading-relaxed mb-6">
+                        Premium electronics repair services with a focus on quality, speed, and customer satisfaction. We bring your devices back to life.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="https://www.facebook.com/robuztatechlabs/" target="_blank" class="w-10 h-10 rounded-full bg-dark border border-slate-200 flex items-center justify-center text-slate-900/70 hover:text-slate-900 hover:border-primary transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/robuztatechlabs/" target="_blank" class="w-10 h-10 rounded-full bg-dark border border-slate-200 flex items-center justify-center text-slate-900/70 hover:text-slate-900 hover:border-primary transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://in.linkedin.com/company/robuzta-techlabs" target="_blank" class="w-10 h-10 rounded-full bg-dark border border-slate-200 flex items-center justify-center text-slate-900/70 hover:text-slate-900 hover:border-primary transition-colors"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://www.youtube.com/@robuztatechlabs" target="_blank" class="w-10 h-10 rounded-full bg-dark border border-slate-200 flex items-center justify-center text-slate-900/70 hover:text-slate-900 hover:border-primary transition-colors"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-6">Our Services</h4>
+                    <ul class="space-y-3 text-sm text-slate-900/60">
+                        <li><a href="services.html" class="hover:text-primary transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Mobile Repair</a></li>
+                        <li><a href="services.html" class="hover:text-primary transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Laptop & MacBook</a></li>
+                        <li><a href="services.html" class="hover:text-primary transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">PC & Gaming Setup</a></li>
+                        <li><a href="services.html" class="hover:text-primary transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Data Recovery</a></li>
+                        <li><a href="services.html" class="hover:text-primary transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Smartwatch Repair</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-6">Quick Links</h4>
+                    <ul class="space-y-3 text-sm text-slate-900/60">
+                        <li><a href="about.html" class="hover:text-primary transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">About Us</a></li>
+                        <li><a href="tracking.html" class="hover:text-primary transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Track Repair</a></li>
+                        <li><a href="pricing.html" class="hover:text-primary transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Pricing Plans</a></li>
+                        <li><a href="booking.html" class="hover:text-primary transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Book a Service</a></li>
+                        <li><a href="contact.html" class="hover:text-primary transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Contact Support</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-6">Contact Us</h4>
+                    <ul class="space-y-4 text-sm text-slate-900/60">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot mt-1 text-primary"></i>
+                            <span>103, First Floor, Sun South Winds, Safal Parisar Road, South Bopal, Ahmedabad, Gujarat 380058</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-phone text-primary"></i>
+                            <span>+91 999 245 2459</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-envelope text-primary"></i>
+                            <span>info@REPAIRE.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-slate-200 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-slate-900/50">
+                <p>&copy; 2026 REPAIRE. All rights reserved.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-slate-900 transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-slate-900 after:transition-all hover:after:w-full">Privacy Policy</a>
+                    <a href="#" class="hover:text-slate-900 transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-slate-900 after:transition-all hover:after:w-full">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/theme.js"></script>
+    <script src="js/cursor.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/chatbot.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ once: true });
+        
+        // Multi step handler
+        const steps = [
+            document.getElementById('bookingStep1'),
+            document.getElementById('bookingStep2'),
+            document.getElementById('bookingStep3'),
+            document.getElementById('bookingStep4')
+        ];
+        const stepDots = document.querySelectorAll('.step-dot');
+        const progressBar = document.getElementById('progressBar');
+        
+        let currentStep = 0;
+        
+        function updateStep(newStep) {
+            steps[currentStep].classList.add('hidden');
+            steps[newStep].classList.remove('hidden');
+            
+            stepDots[currentStep].classList.remove('bg-primary');
+            stepDots[currentStep].classList.add('bg-dark', 'border-slate-200');
+            stepDots[newStep].classList.remove('bg-dark', 'border-slate-200');
+            stepDots[newStep].classList.add('bg-primary');
+            
+            progressBar.style.width = `${(newStep / (steps.length - 1)) * 100}%`;
+            currentStep = newStep;
+            
+            if(currentStep === 3) {
+                // Populate Summary
+                const device = document.getElementById('deviceType').value;
+                const brand = document.getElementById('deviceBrand').value;
+                const issue = document.getElementById('deviceIssue').value;
+                const mode = document.querySelector('input[name="serviceMode"]:checked').value;
+                const date = document.getElementById('appointmentDate').value;
+                const time = document.getElementById('appointmentTime').value;
+                
+                document.getElementById('summaryDevice').innerText = `${brand} ${device}`;
+                document.getElementById('summaryIssue').innerText = issue;
+                document.getElementById('summaryMode').innerText = mode;
+                document.getElementById('summarySchedule').innerText = `${date} at ${time}`;
+                
+                // Cost calculation
+                let cost = 1499.00;
+                if(issue.includes("Screen")) cost = 2999.00;
+                if(issue.includes("Motherboard")) cost = 5999.00;
+                if(issue.includes("Water")) cost = 3999.00;
+                document.getElementById('summaryCost').innerText = `₹${cost.toFixed(2)}`;
+            }
+        }
+        
+        document.getElementById('next1').addEventListener('click', () => {
+            if(document.getElementById('deviceType').value && document.getElementById('deviceBrand').value) {
+                updateStep(1);
+            }
+        });
+        document.getElementById('next2').addEventListener('click', () => {
+            if(document.getElementById('deviceIssue').value) {
+                updateStep(2);
+            }
+        });
+        document.getElementById('next3').addEventListener('click', () => {
+            if(document.getElementById('appointmentDate').value && document.getElementById('appointmentTime').value) {
+                updateStep(3);
+            }
+        });
+        
+        document.getElementById('back1').addEventListener('click', () => updateStep(0));
+        document.getElementById('back2').addEventListener('click', () => updateStep(1));
+        document.getElementById('back3').addEventListener('click', () => updateStep(2));
+        
+        // Brand selector dynamic options
+        const brands = {
+            Smartphone: ['Apple', 'Samsung', 'Google Pixel', 'OnePlus', 'Nothing'],
+            Laptop: ['Dell', 'HP', 'Lenovo', 'ASUS', 'MacBook'],
+            'Desktop PC': ['Custom Build', 'Dell', 'HP', 'Lenovo', 'Other'],
+            Tablet: ['iPad', 'Galaxy Tab', 'Microsoft Surface']
+        };
+        
+        const deviceSel = document.getElementById('deviceType');
+        const brandSel = document.getElementById('deviceBrand');
+        
+        deviceSel.addEventListener('change', () => {
+            brandSel.innerHTML = '<option value="">Choose Brand</option>';
+            const dev = deviceSel.value;
+            if(dev) {
+                brands[dev].forEach(b => {
+                    const opt = document.createElement('option');
+                    opt.value = b;
+                    opt.innerText = b;
+                    brandSel.appendChild(opt);
+                });
+                brandSel.disabled = false;
+            } else {
+                brandSel.disabled = true;
+            }
+        });
+        
+        // Form submit
+        document.getElementById('multiStepBooking').addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Generate a random Repair ID and save booking in LocalStorage
+            const repairId = 'REP-' + Math.floor(1000 + Math.random() * 9000);
+            
+            const bookingData = {
+                repairId,
+                name: document.getElementById('custName').value,
+                phone: document.getElementById('custPhone').value,
+                device: document.getElementById('deviceType').value,
+                brand: document.getElementById('deviceBrand').value,
+                issue: document.getElementById('deviceIssue').value,
+                date: document.getElementById('appointmentDate').value,
+                time: document.getElementById('appointmentTime').value,
+                cost: document.getElementById('summaryCost').innerText,
+                status: 'Received'
+            };
+            
+            localStorage.setItem(repairId, JSON.stringify(bookingData));
+            
+            // Auth check for payment
+            const currentUser = localStorage.getItem('currentUser');
+            if (currentUser) {
+                window.location.href = 'payment.html?id=' + repairId;
+            } else {
+                localStorage.setItem('redirectAfterLogin', 'payment.html?id=' + repairId);
+                window.location.href = 'login.html';
+            }
+        });
+    </script>
+<script src="js/auth.js"></script>
+</body>
+</html>
