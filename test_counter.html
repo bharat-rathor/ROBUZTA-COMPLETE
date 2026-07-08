@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<body>
+    <div style="height:2000px">Scroll down</div>
+    <span data-count="8200" id="c1"> 0 </span>
+    <span data-count="15000" id="c2">0</span>
+    <script>
+    const counters = document.querySelectorAll('[data-count]');
+    const speed = 200;
+
+    const animateCounters = () => {
+        counters.forEach(counter => {
+            const updateCount = () => {
+                const target = +counter.getAttribute('data-count');
+                const count = +counter.innerText;
+                const inc = target / speed;
+
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + inc);
+                    setTimeout(updateCount, 10);
+                } else {
+                    counter.innerText = target;
+                }
+            };
+            
+            const rect = counter.getBoundingClientRect();
+            if(rect.top < window.innerHeight && rect.bottom >= 0 && counter.innerText.trim() === '0' && !counter.hasAttribute('data-started')) {
+                counter.setAttribute('data-started', 'true');
+                updateCount();
+            }
+        });
+    };
+    window.addEventListener('scroll', animateCounters);
+    animateCounters();
+    </script>
+</body>
+</html>
+
+
+
+

@@ -1,4 +1,4 @@
-// WhatsApp Support Widget Simulation
+﻿// WhatsApp Support Widget Simulation
 document.addEventListener('DOMContentLoaded', () => {
     // Inject WhatsApp Chat Widget HTML
     const whatsappWidgetHtml = `
@@ -66,8 +66,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const text = input.value.trim();
         if(!text) return;
         
-        // India number: 8320641442 => +91 8320641442
-        const phoneNumber = "918320641442";
+        // India number: 9992452459 => +91 9992452459
+        const phoneNumber = "919992452459";
         const url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(text)}`;
         
         // Open in new tab
@@ -78,3 +78,4 @@ document.addEventListener('DOMContentLoaded', () => {
         windowEl.classList.add('hidden');
     });
 });
+

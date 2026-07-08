@@ -1,7 +1,20 @@
-document.addEventListener('DOMContentLoaded', () => {
+﻿document.addEventListener('DOMContentLoaded', () => {
+    // Make service cards clickable
+    document.querySelectorAll('.group.bg-card').forEach(card => {
+        card.style.cursor = 'pointer';
+        card.addEventListener('click', (e) => {
+            if(e.target.closest('a')) return;
+            const link = card.querySelector('a');
+            if (link) window.location.href = link.href;
+        });
+    });
+
     // Mobile Menu Implementation
     const mobileMenuBtn = document.querySelector('button[aria-label="Menu"]');
     const desktopNav = document.querySelector('nav');
+    
+    // Dynamic path for links
+    const pPath = window.location.pathname.includes('/pages/') ? '' : 'pages/';
     
     if (mobileMenuBtn && desktopNav) {
         // Create mobile menu overlay
@@ -9,15 +22,20 @@ document.addEventListener('DOMContentLoaded', () => {
             <div id="mobile-menu-container" class="fixed inset-0 z-[110] hidden">
                 <!-- Backdrop -->
                 <div id="mobile-menu-backdrop" class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm transition-opacity opacity-0 duration-300"></div>
-                
-                <!-- Drawer -->
+
+                                <!-- Drawer -->
                 <div id="mobile-menu-drawer" class="absolute top-0 right-0 h-full w-[280px] sm:w-[320px] bg-white shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col pt-24 px-6 overflow-y-auto">
                     <button id="mobile-menu-close" class="absolute top-6 right-6 text-slate-500 hover:text-slate-900 text-3xl"><i class="fa-solid fa-xmark"></i></button>
                     <div class="flex flex-col gap-4 text-lg font-medium" id="mobile-nav-links">
                         <!-- Links will be cloned here -->
                     </div>
-                    <div class="mt-8 border-t border-slate-200 pt-6 mb-8">
-                        <a href="booking.html" class="w-full py-3.5 rounded-xl bg-primary hover:bg-primary/90 text-white font-bold transition-all shadow-[0_0_15px_rgba(3,105,161,0.3)] flex items-center justify-center gap-2">
+                    
+                    <!-- Auth dynamically injected here by auth.js -->
+                    <div id="mobile-auth-container" class="mt-6 pt-6 border-t border-slate-200 flex flex-col gap-4">
+                    </div>
+                    
+                    <div class="mt-6 mb-8">
+                        <a href="${pPath}booking.html" class="w-full py-3.5 rounded-xl bg-primary hover:bg-primary/90 text-white font-bold transition-all shadow-[0_0_15px_rgba(3,105,161,0.3)] flex items-center justify-center gap-2">
                             <span>Book Repair</span>
                             <i class="fa-solid fa-arrow-right text-sm"></i>
                         </a>
@@ -38,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
         links.forEach(link => {
             const clone = link.cloneNode(true);
             // Remove the after underline animation for mobile and add padding/border
-            clone.className = 'block py-3 border-b border-slate-100 text-slate-700 hover:text-primary transition-colors';
+            clone.className = "block py-3 border-b border-slate-100 text-slate-700 hover:text-primary transition-colors w-max relative after:content-[''] after:absolute after:bottom-3 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full";
             linksContainer.appendChild(clone);
         });
         
@@ -145,7 +163,8 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Only animate if element is in viewport
             const rect = counter.getBoundingClientRect();
-            if(rect.top < window.innerHeight && rect.bottom >= 0 && counter.innerText == '0') {
+                        if(rect.top < window.innerHeight && rect.bottom >= 0 && !counter.hasAttribute('data-started')) {
+                counter.setAttribute('data-started', 'true');
                 updateCount();
             }
         });
@@ -204,26 +223,32 @@ document.addEventListener('DOMContentLoaded', () => {
             const content = this.nextElementSibling;
             const icon = this.querySelector('i');
             
-            // Close all other accordions (optional, depending on desired UX)
+                        // Close all other accordions
             faqBtns.forEach(otherBtn => {
                 if (otherBtn !== this) {
                     const otherContent = otherBtn.nextElementSibling;
                     const otherIcon = otherBtn.querySelector('i');
-                    otherContent.style.maxHeight = null;
-                    otherIcon.classList.remove('rotate-180', 'text-primary');
-                    otherIcon.classList.add('text-white/50');
+                    if (otherContent) {
+                        otherContent.classList.add('max-h-0');
+                        otherContent.classList.remove('max-h-96');
+                    }
+                    if (otherIcon) {
+                        otherIcon.classList.remove('rotate-180');
+                    }
                 }
             });
             
             // Toggle current
-            if (content.style.maxHeight) {
-                content.style.maxHeight = null;
-                icon.classList.remove('rotate-180', 'text-primary');
-                icon.classList.add('text-white/50');
-            } else {
-                content.style.maxHeight = content.scrollHeight + "px";
-                icon.classList.add('rotate-180', 'text-primary');
-                icon.classList.remove('text-white/50');
+            if (content) {
+                if (content.classList.contains('max-h-96')) {
+                    content.classList.remove('max-h-96');
+                    content.classList.add('max-h-0');
+                    if(icon) icon.classList.remove('rotate-180');
+                } else {
+                    content.classList.remove('max-h-0');
+                    content.classList.add('max-h-96');
+                    if(icon) icon.classList.add('rotate-180');
+                }
             }
         });
     });
@@ -261,10 +286,10 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('summary-issue').innerText = currentIssue;
             
             // Dummy logic for price
-            let priceStr = '₹2,499 - ₹4,999';
-            if(currentIssue.includes('Screen')) priceStr = '₹3,999 - ₹8,999';
-            if(currentIssue.includes('Motherboard')) priceStr = '₹6,999 - ₹15,999';
-            if(currentIssue.includes('Water')) priceStr = '₹2,999 - ₹11,999';
+            let priceStr = 'Γé╣2,499 - Γé╣4,999';
+            if(currentIssue.includes('Screen')) priceStr = 'Γé╣3,999 - Γé╣8,999';
+            if(currentIssue.includes('Motherboard')) priceStr = 'Γé╣6,999 - Γé╣15,999';
+            if(currentIssue.includes('Water')) priceStr = 'Γé╣2,999 - Γé╣11,999';
             
             document.getElementById('estimate-price').innerText = priceStr;
             goToStep(3);
@@ -319,3 +344,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 });
+
+
+
+
+
+
+
+
+

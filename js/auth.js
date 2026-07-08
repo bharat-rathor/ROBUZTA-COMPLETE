@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (actionsDiv.querySelector('#auth-control-group')) return;
             
             // Remove any existing static login links
-            const staticLogin = actionsDiv.querySelector('a[href="login.html"]');
+                        const staticLogin = actionsDiv.querySelector('a[href="login.html"]');
             if (staticLogin) {
                 staticLogin.remove();
             }
@@ -23,9 +23,12 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const bookBtn = actionsDiv.querySelector('a[href="booking.html"]') || actionsDiv.querySelector('a[href="index.html#book"]');
             
+            const isRoot = window.location.pathname.endsWith('index.html') || window.location.pathname === '/' || !window.location.pathname.includes('pages/');
+            const pPath = isRoot ? 'pages/' : '';
+
             if (currentUser) {
                 authControl.innerHTML = `
-                    <a href="profile.html" class="flex items-center gap-3 bg-slate-100 border border-slate-200 rounded-full pl-3 pr-4 py-1.5 hover:border-primary/50 transition-colors">
+                    <a href="${pPath}profile.html" class="flex items-center gap-3 bg-slate-100 border border-slate-200 rounded-full pl-3 pr-4 py-1.5 hover:border-primary/50 transition-colors">
                         <div class="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-xs font-bold text-white uppercase">
                             ${currentUser.name ? currentUser.name.charAt(0) : 'U'}
                         </div>
@@ -37,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 `;
             } else {
                 authControl.innerHTML = `
-                    <a href="login.html" class="text-sm font-medium text-slate-600 hover:text-primary transition-colors flex items-center gap-1.5">
+                    <a href="${pPath}login.html" class="text-sm font-medium text-slate-600 hover:text-primary transition-colors flex items-center gap-1.5">
                         <i class="fa-solid fa-user text-xs"></i> Sign In
                     </a>
                 `;
@@ -49,11 +52,53 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 actionsDiv.appendChild(authControl);
             }
-        });
+                });
+        
+        // Update Mobile Profile Button if it exists
+        const mobileProfileBtn = document.getElementById('mobile-profile-btn');
+        if (mobileProfileBtn) {
+            if (currentUser) {
+                mobileProfileBtn.innerHTML = `
+                    <div class="w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center text-xs font-bold mr-2">
+                        ${currentUser.name ? currentUser.name.charAt(0) : "U"}
+                    </div>
+                    <span>${currentUser.name || "User"}</span>
+                `;
+            }
+        }
+
+                // Mobile Auth Logic
+        const mobileAuthContainer = document.getElementById('mobile-auth-container');
+        if (mobileAuthContainer) {
+            const isRoot = window.location.pathname.endsWith('index.html') || window.location.pathname === '/' || !window.location.pathname.includes('pages/');
+            const pPath = isRoot ? 'pages/' : '';
+            if (currentUser) {
+                mobileAuthContainer.innerHTML = `
+                    <a href="${pPath}profile.html" class="flex items-center gap-3 bg-slate-50 border border-slate-100 rounded-xl p-3 hover:border-primary/50 transition-colors">
+                        <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-sm font-bold text-white uppercase shrink-0">
+                            ${currentUser.name ? currentUser.name.charAt(0) : 'U'}
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-sm font-bold text-slate-800">${currentUser.name || 'User'}</span>
+                            <span class="text-xs text-slate-500">View Profile</span>
+                        </div>
+                    </a>
+                    <button id="nav-logout-btn-mobile" class="w-full py-3 rounded-xl border border-red-100 bg-red-50 text-red-600 font-bold hover:bg-red-600 hover:text-white transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-right-from-bracket"></i> Logout
+                    </button>
+                `;
+            } else {
+                mobileAuthContainer.innerHTML = `
+                    <a href="${pPath}login.html" class="w-full py-3.5 rounded-xl border-2 border-primary text-primary hover:bg-primary hover:text-white font-bold transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-user text-sm"></i> Sign In / Register
+                    </a>
+                `;
+            }
+        }
         
         document.body.addEventListener('click', (e) => {
             // Logout logic
-            const logoutBtn = e.target.closest('#nav-logout-btn');
+            const logoutBtn = e.target.closest('#nav-logout-btn') || e.target.closest('#nav-logout-btn-mobile');
             if (logoutBtn) {
                 e.preventDefault();
                 localStorage.removeItem('currentUser');
@@ -85,7 +130,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         toast.remove();
                         // Redirect to login, passing the intent
                         localStorage.setItem('redirectAfterLogin', 'booking.html');
-                        window.location.href = 'login.html';
+                        const isRoot = window.location.pathname.endsWith('index.html') || window.location.pathname === '/' || !window.location.pathname.includes('pages/');
+                        window.location.href = isRoot ? 'pages/login.html' : 'login.html';
                     }, 2000);
                 }
             }
@@ -94,3 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     checkAuthStatus();
 });
+
+
+
+

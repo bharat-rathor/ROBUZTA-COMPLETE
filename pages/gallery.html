@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog & Tech Guides | REPAIRE</title>
+    <title>Gallery & Showcase | ROBUZTA</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -30,7 +30,63 @@
             }
         }
     </script>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* Before/After Slider Styling */
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 1rem;
+            border: 1px border-slate-200;
+        }
+        .image-before, .image-after {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .image-before img, .image-after img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .image-after {
+            width: 50%;
+            overflow: hidden;
+            border-right: 3px solid #E60000;
+        }
+        .slider-resizer {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 4px;
+            background: #E60000;
+            cursor: ew-resize;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+        .slider-handle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #E60000;
+            border: 4px solid #0A0A0A;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            box-shadow: 0 0 15px rgba(230,0,0,0.5);
+            z-index: 11;
+        }
+    </style>
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -40,13 +96,13 @@
 
     <header class="fixed w-full top-0 z-50 bg-dark/80 backdrop-blur-md border-b border-slate-200 py-4 shadow-lg">
         <div class="w-full px-6 lg:px-12 flex items-center justify-between">
-                        <a href="index.html" class="flex flex-col items-start justify-center group cursor-pointer hover:opacity-90 transition-opacity scale-90 origin-left">
+                        <a href="../index.html" class="flex flex-col items-start justify-center group cursor-pointer hover:opacity-90 transition-opacity scale-90 origin-left">
                 <div class="text-[32px] font-black tracking-[-0.05em] leading-none uppercase font-heading text-slate-900 flex items-center">
-                    REPAI<span class="text-primary relative mx-[1px] inline-block">
-                        R
+                    ROBU<span class="text-primary relative mx-[1px] inline-block">
+                        Z
                         <span class="absolute top-[8px] left-0 w-full h-[2.5px] bg-white z-10"></span>
                         <span class="absolute bottom-[10px] left-0 w-full h-[2.5px] bg-white z-10"></span>
-                    </span>E
+                    </span>TA
                 </div>
                 <div class="flex mt-0.5 ml-1 -skew-x-[15deg] text-[9px] font-bold tracking-[0.15em] uppercase overflow-hidden shadow-sm">
                     <div class="bg-primary text-white px-2 py-0.5 pl-2.5">TECH</div>
@@ -55,7 +111,7 @@
             </a>
 
             <nav class="hidden lg:flex items-center gap-8 font-medium">
-                <a href="index.html" class="hover:text-primary transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Home</a>
+                <a href="../index.html" class="hover:text-primary transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Home</a>
                 <a href="services.html" class="hover:text-primary transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Services</a>
                 <a href="about.html" class="hover:text-primary transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">About Us</a>
                 <a href="pricing.html" class="hover:text-primary transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Pricing</a>
@@ -69,9 +125,9 @@
                     <i class="fa-solid fa-search text-lg"></i>
                 </button>
                 <div class="w-px h-6 bg-slate-200"></div>
-                <a href="booking.html" class="px-6 py-2.5 rounded-full bg-primary hover:bg-primary/90 font-medium text-white transition-all shadow-[0_0_15px_rgba(3,105,161,0.4)] hover:shadow-[0_0_25px_rgba(3,105,161,0.6)] flex items-center gap-2 transform hover:-translate-y-0.5">
+                <a href="booking.html" class="group px-6 py-2.5 rounded-full bg-primary hover:bg-primary/90 font-medium text-white transition-all shadow-[0_0_15px_rgba(3,105,161,0.4)] hover:shadow-[0_0_25px_rgba(3,105,161,0.6)] flex items-center gap-2 transform hover:-translate-y-0.5">
                     <span>Book Repair</span>
-                    <i class="fa-solid fa-arrow-right text-sm"></i>
+                    <i class="fa-solid fa-arrow-right text-sm group-hover:translate-x-1.5 transition-transform duration-300"></i>
                 </a>
             </div>
             
@@ -85,65 +141,59 @@
     <main class="pt-32 pb-24">
         <div class="container mx-auto px-6">
             <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
-                <h1 class="text-5xl font-bold font-heading mb-4">Tech Guides & Insights</h1>
-                <p class="text-slate-900/60">Expert tips on performance optimization, device care, and technology updates.</p>
+                <h1 class="text-5xl font-bold font-heading mb-4">Our Work Gallery</h1>
+                <p class="text-slate-900/60">See how we restore broken screens, fix liquid damage, and rebuild high-performance devices.</p>
             </div>
             
-            <!-- Category Filter -->
-            <div class="flex justify-center gap-4 flex-wrap mb-12" data-aos="fade-up">
-                <button class="filter-btn px-6 py-2 rounded-full bg-primary text-slate-900 font-medium text-sm transition-all" data-category="all">All posts</button>
-                <button class="filter-btn px-6 py-2 rounded-full bg-card border border-slate-200 hover:border-primary/50 text-slate-900/70 font-medium text-sm transition-all" data-category="optimization">PC Optimization</button>
-                <button class="filter-btn px-6 py-2 rounded-full bg-card border border-slate-200 hover:border-primary/50 text-slate-900/70 font-medium text-sm transition-all" data-category="maintenance">Maintenance</button>
-                <button class="filter-btn px-6 py-2 rounded-full bg-card border border-slate-200 hover:border-primary/50 text-slate-900/70 font-medium text-sm transition-all" data-category="guides">Buying Guides</button>
-            </div>
-            
-            <!-- Blog Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="blogGrid">
-                <!-- Blog 1 -->
-                <div class="blog-card bg-card border border-slate-100 rounded-2xl overflow-hidden group transition-all" data-category="optimization" data-aos="fade-up">
-                    <div class="h-56 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1000&auto=format&fit=crop" alt="Gaming Setup" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <!-- Before / After Section -->
+            <div class="max-w-3xl mx-auto mb-20" data-aos="fade-up">
+                <h3 class="text-2xl font-bold mb-6 text-center">Interactive Before/After Screen Restoration</h3>
+                <div class="slider-container" id="beforeAfterSlider">
+                    <div class="image-before">
+                        <img src="https://images.unsplash.com/photo-1601524909162-be87252be298?q=80&w=1000&auto=format&fit=crop" alt="Broken Screen">
+                        <div class="absolute bottom-4 right-4 bg-dark/80 px-3 py-1 rounded text-xs font-bold uppercase tracking-wider">Before</div>
                     </div>
-                    <div class="p-6">
-                        <span class="text-xs text-primary font-bold uppercase tracking-wider">PC Optimization</span>
-                        <h3 class="text-xl font-bold mt-2 mb-3 group-hover:text-primary transition-colors">How to Optimize Windows 11 for Peak Gaming Performance</h3>
-                        <p class="text-sm text-slate-900/60 mb-6">Discover the settings you need to tweak to squeeze extra frames out of your gaming build.</p>
-                        <div class="flex items-center justify-between text-xs text-slate-900/40">
-                            <span>July 5, 2026</span>
-                            <span>5 min read</span>
+                    <div class="image-after" id="afterImage">
+                        <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=1000&auto=format&fit=crop" alt="Fixed Screen">
+                        <div class="absolute bottom-4 left-4 bg-primary px-3 py-1 rounded text-xs font-bold uppercase tracking-wider">After</div>
+                    </div>
+                    <div class="slider-resizer" id="resizer">
+                        <div class="slider-handle">
+                            <i class="fa-solid fa-arrows-left-right"></i>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Blog 2 -->
-                <div class="blog-card bg-card border border-slate-100 rounded-2xl overflow-hidden group transition-all" data-category="maintenance" data-aos="fade-up" data-aos-delay="100">
-                    <div class="h-56 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1601524909162-be87252be298?q=80&w=1000&auto=format&fit=crop" alt="Phone Care" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            </div>
+            
+            <!-- Grid Gallery -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-card border border-slate-200 rounded-2xl overflow-hidden group" data-aos="fade-up">
+                    <div class="overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?q=80&w=1000&auto=format&fit=crop" alt="GPU Upgrade" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
                     <div class="p-6">
-                        <span class="text-xs text-primary font-bold uppercase tracking-wider">Maintenance</span>
-                        <h3 class="text-xl font-bold mt-2 mb-3 group-hover:text-primary transition-colors">5 Critical Tips to Extend Your Smartphone's Battery Life</h3>
-                        <p class="text-sm text-slate-900/60 mb-6">Prevent battery degradation with these proven charging habits and device configurations.</p>
-                        <div class="flex items-center justify-between text-xs text-slate-900/40">
-                            <span>June 28, 2026</span>
-                            <span>4 min read</span>
-                        </div>
+                        <h4 class="font-bold text-lg mb-2">GPU Thermal repaste</h4>
+                        <p class="text-sm text-slate-900/60">Cleaning and optimizing thermal solutions on an Alienware gaming laptop.</p>
                     </div>
                 </div>
                 
-                <!-- Blog 3 -->
-                <div class="blog-card bg-card border border-slate-100 rounded-2xl overflow-hidden group transition-all" data-category="guides" data-aos="fade-up" data-aos-delay="200">
-                    <div class="h-56 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?q=80&w=1000&auto=format&fit=crop" alt="Laptop Care" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="bg-card border border-slate-200 rounded-2xl overflow-hidden group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1614213951268-f99a544c0422?q=80&w=1000&auto=format&fit=crop" alt="MacBook Repair" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
                     <div class="p-6">
-                        <span class="text-xs text-primary font-bold uppercase tracking-wider">Buying Guides</span>
-                        <h3 class="text-xl font-bold mt-2 mb-3 group-hover:text-primary transition-colors">MacBook Pro vs. Windows Workstation: Which to Buy in 2026</h3>
-                        <p class="text-sm text-slate-900/60 mb-6">An in-depth hardware comparison tailored for developers, video editors, and creators.</p>
-                        <div class="flex items-center justify-between text-xs text-slate-900/40">
-                            <span>June 15, 2026</span>
-                            <span>8 min read</span>
-                        </div>
+                        <h4 class="font-bold text-lg mb-2">MacBook Logic Board Fix</h4>
+                        <p class="text-sm text-slate-900/60">Micro-soldering capacitors to recover standard power states on MacBook Pro.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-card border border-slate-200 rounded-2xl overflow-hidden group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=1000&auto=format&fit=crop" alt="Liquid Cooling" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h4 class="font-bold text-lg mb-2">Custom Water Loop Build</h4>
+                        <p class="text-sm text-slate-900/60">Complex hard tubing and cooling loop construction for an enterprise workstation.</p>
                     </div>
                 </div>
             </div>
@@ -155,14 +205,14 @@
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
                 <div>
-                    <a href="index.html" class="flex flex-col items-start justify-center group cursor-pointer hover:opacity-90 transition-opacity scale-75 origin-left mb-6">
+                    <a href="../index.html" class="flex flex-col items-start justify-center group cursor-pointer hover:opacity-90 transition-opacity scale-75 origin-left mb-6">
                         <div class="text-[32px] font-black tracking-[-0.05em] leading-none uppercase font-heading text-slate-900 flex items-center">
-                            REPAI<span class="text-primary relative mx-[1px] inline-block">
-                                R
+                            ROBU<span class="text-primary relative mx-[1px] inline-block">
+                        Z
                                 <span class="absolute top-[8px] left-0 w-full h-[2.5px] bg-card z-10"></span>
                                 <span class="absolute bottom-[10px] left-0 w-full h-[2.5px] bg-card z-10"></span>
-                            </span>E
-                        </div>
+                            </span>TA
+                </div>
                         <div class="flex mt-0.5 ml-1 -skew-x-[15deg] text-[9px] font-bold tracking-[0.15em] uppercase overflow-hidden shadow-sm">
                             <div class="bg-primary text-white px-2 py-0.5 pl-2.5">TECH</div>
                             <div class="bg-slate-900 text-white px-2 py-0.5 pr-2.5">LABS</div>
@@ -206,7 +256,7 @@
                     <ul class="space-y-4 text-sm text-slate-900/60">
                         <li class="flex items-start gap-3">
                             <i class="fa-solid fa-location-dot mt-1 text-primary"></i>
-                            <span>103, First Floor, Sun South Winds, Safal Parisar Road, South Bopal, Ahmedabad, Gujarat 380058</span>
+                            <span>103, First Floor, Sun South Winds, Safal Parisar Road, South Bopal, Ahmedabad, Gujarat 380057</span>
                         </li>
                         <li class="flex items-center gap-3">
                             <i class="fa-solid fa-phone text-primary"></i>
@@ -214,14 +264,14 @@
                         </li>
                         <li class="flex items-center gap-3">
                             <i class="fa-solid fa-envelope text-primary"></i>
-                            <span>info@REPAIRE.com</span>
+                            <span>info@robuztatechlabs.com</span>
                         </li>
                     </ul>
                 </div>
             </div>
             
             <div class="pt-8 border-t border-slate-200 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-slate-900/50">
-                <p>&copy; 2026 REPAIRE. All rights reserved.</p>
+                <p>&copy; 2026 ROBUZTA. All rights reserved.</p>
                 <div class="flex gap-6">
                     <a href="#" class="hover:text-slate-900 transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-slate-900 after:transition-all hover:after:w-full">Privacy Policy</a>
                     <a href="#" class="hover:text-slate-900 transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-slate-900 after:transition-all hover:after:w-full">Terms of Service</a>
@@ -230,41 +280,48 @@
         </div>
     </footer>
 
-    <script src="js/theme.js"></script>
-    <script src="js/cursor.js"></script>
-    <script src="js/search.js"></script>
-    <script src="js/chatbot.js"></script>
+    <script src="../js/main.js?v=6"></script>
+    <script src="../js/theme.js"></script>
+    <script src="../js/cursor.js"></script>
+    <script src="../js/search.js"></script>
+    <script src="../js/chatbot.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ once: true });
         
-        // Dynamic Filtering
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const blogCards = document.querySelectorAll('.blog-card');
+        // Before After Slider Logic
+        const container = document.getElementById('beforeAfterSlider');
+        const afterImg = document.getElementById('afterImage');
+        const resizer = document.getElementById('resizer');
         
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Toggle active state
-                filterBtns.forEach(b => b.classList.replace('bg-primary', 'bg-card'));
-                filterBtns.forEach(b => b.classList.add('border', 'border-slate-200', 'text-slate-900/70'));
-                
-                btn.classList.replace('bg-card', 'bg-primary');
-                btn.classList.remove('border', 'border-slate-200', 'text-slate-900/70');
-                btn.classList.add('text-slate-900');
-                
-                const cat = btn.getAttribute('data-category');
-                
-                blogCards.forEach(card => {
-                    if(cat === 'all' || card.getAttribute('data-category') === cat) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            });
+        container.addEventListener('mousemove', (e) => {
+            const rect = container.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const percent = (x / rect.width) * 100;
+            
+            if(percent >= 0 && percent <= 100) {
+                afterImg.style.width = `${percent}%`;
+                resizer.style.left = `${percent}%`;
+            }
         });
     </script>
-<script src="js/auth.js"></script>
+<script src="../js/auth.js?v=2"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

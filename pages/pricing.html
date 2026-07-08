@@ -1,13 +1,14 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FAQs | REPAIRE</title>
+    <title>Pricing & Plans | ROBUZTA</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -30,7 +31,7 @@
             }
         }
     </script>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -40,13 +41,13 @@
 
     <header class="fixed w-full top-0 z-50 bg-dark/80 backdrop-blur-md border-b border-slate-200 py-4 shadow-lg">
         <div class="w-full px-6 lg:px-12 flex items-center justify-between">
-                        <a href="index.html" class="flex flex-col items-start justify-center group cursor-pointer hover:opacity-90 transition-opacity scale-90 origin-left">
+                        <a href="../index.html" class="flex flex-col items-start justify-center group cursor-pointer hover:opacity-90 transition-opacity scale-90 origin-left">
                 <div class="text-[32px] font-black tracking-[-0.05em] leading-none uppercase font-heading text-slate-900 flex items-center">
-                    REPAI<span class="text-primary relative mx-[1px] inline-block">
-                        R
+                    ROBU<span class="text-primary relative mx-[1px] inline-block">
+                        Z
                         <span class="absolute top-[8px] left-0 w-full h-[2.5px] bg-white z-10"></span>
                         <span class="absolute bottom-[10px] left-0 w-full h-[2.5px] bg-white z-10"></span>
-                    </span>E
+                    </span>TA
                 </div>
                 <div class="flex mt-0.5 ml-1 -skew-x-[15deg] text-[9px] font-bold tracking-[0.15em] uppercase overflow-hidden shadow-sm">
                     <div class="bg-primary text-white px-2 py-0.5 pl-2.5">TECH</div>
@@ -55,7 +56,7 @@
             </a>
 
             <nav class="hidden lg:flex items-center gap-8 font-medium">
-                <a href="index.html" class="hover:text-primary transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Home</a>
+                <a href="../index.html" class="hover:text-primary transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Home</a>
                 <a href="services.html" class="hover:text-primary transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Services</a>
                 <a href="about.html" class="hover:text-primary transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">About Us</a>
                 <a href="pricing.html" class="hover:text-primary transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Pricing</a>
@@ -63,122 +64,97 @@
                 <a href="contact.html" class="hover:text-primary transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Contact</a>
             </nav>
 
+                        <!-- Actions -->
             <div class="hidden lg:flex items-center gap-4">
-                <a href="booking.html" class="px-6 py-2.5 rounded-full bg-primary hover:bg-primary/90 font-medium text-white transition-all shadow-[0_0_15px_rgba(3,105,161,0.4)]">
-                    Book Repair
+                <button class="text-slate-900/80 hover:text-slate-900 transition-colors" aria-label="Toggle Search">
+                    <i class="fa-solid fa-search text-lg"></i>
+                </button>
+                <div class="w-px h-6 bg-slate-200"></div>
+                <a href="booking.html" class="group px-6 py-2.5 rounded-full bg-primary hover:bg-primary/90 font-medium text-white transition-all shadow-[0_0_15px_rgba(3,105,161,0.4)] hover:shadow-[0_0_25px_rgba(3,105,161,0.6)] flex items-center gap-2 transform hover:-translate-y-0.5">
+                    <span>Book Repair</span>
+                    <i class="fa-solid fa-arrow-right text-sm group-hover:translate-x-1.5 transition-transform duration-300"></i>
                 </a>
             </div>
+            
+            <!-- Mobile Menu Toggle --><!-- Mobile Menu Toggle -->
+            <button class="lg:hidden text-2xl text-slate-900/80 hover:text-slate-900 ml-4" aria-label="Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
         </div>
     </header>
 
     <main class="pt-32 pb-24">
-        <div class="container mx-auto px-6 max-w-4xl">
-            <div class="mb-12" data-aos="fade-up">
-                <h1 class="text-4xl font-bold font-heading text-slate-800 mb-4">FAQ's</h1>
-                <p class="text-slate-900/50 font-medium">Frequently Asked Questions</p>
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
+                <h1 class="text-5xl font-bold font-heading mb-4">Transparent Pricing</h1>
+                <p class="text-slate-900/60">No hidden fees, no surprises. Choose a service package or request a custom quote.</p>
             </div>
             
-            <div class="space-y-4" data-aos="fade-up">
-                <!-- FAQ Item 1 -->
-                <div class="bg-card border border-slate-100 rounded-2xl overflow-hidden transition-all">
-                    <button class="faq-btn w-full px-6 py-5 flex items-center justify-between text-left font-bold text-lg hover:bg-slate-50 transition-colors">
-                        <span class="flex items-center gap-3"><i class="fa-solid fa-chevron-down text-primary text-sm transition-transform"></i> How and when will I know the repair charges?</span>
-                    </button>
-                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300">
-                        <div class="px-6 pb-5 pl-12 text-slate-900/70 text-sm">
-                            We provide a transparent estimate before beginning any work. You can use our online estimator, and our engineers will confirm exact charges after full diagnostics.
-                        </div>
-                    </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Basic Plan -->
+                <div class="bg-card border border-slate-100 rounded-2xl p-8 hover:border-primary/50 transition-all flex flex-col relative" data-aos="fade-up">
+                    <h3 class="text-2xl font-bold mb-2">Basic Repair</h3>
+                    <p class="text-sm text-slate-900/60 mb-6">Standard 3-day turnaround</p>
+                    <div class="text-4xl font-bold font-heading mb-6">From ₹999</div>
+                    <ul class="text-sm text-slate-900/70 space-y-4 mb-8 flex-1">
+                        <li><i class="fa-solid fa-check text-primary mr-2"></i>Free Diagnostics</li>
+                        <li><i class="fa-solid fa-check text-primary mr-2"></i>OEM Quality Parts</li>
+                        <li><i class="fa-solid fa-check text-primary mr-2"></i>30-Day Warranty</li>
+                        <li><i class="fa-solid fa-xmark text-slate-900/20 mr-2"></i>Express Service</li>
+                    </ul>
+                    <a href="booking.html" class="block w-full py-3 text-center rounded-xl border border-primary text-primary hover:bg-primary hover:text-slate-900 transition-colors font-medium">Select Basic</a>
                 </div>
                 
-                <!-- FAQ Item 2 -->
-                <div class="bg-card border border-slate-100 rounded-2xl overflow-hidden transition-all">
-                    <button class="faq-btn w-full px-6 py-5 flex items-center justify-between text-left font-bold text-lg hover:bg-slate-50 transition-colors">
-                        <span class="flex items-center gap-3"><i class="fa-solid fa-chevron-down text-primary text-sm transition-transform"></i> How can I trust that the spare parts used are original?</span>
-                    </button>
-                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300">
-                        <div class="px-6 pb-5 pl-12 text-slate-900/70 text-sm">
-                            We source parts strictly from verified OEM channels. Every replacement part goes through rigorous quality checks and comes backed by our service warranty.
-                        </div>
-                    </div>
+                <!-- Premium Plan -->
+                <div class="bg-card border border-primary rounded-2xl p-8 hover:shadow-[0_0_30px_rgba(230,0,0,0.2)] transition-all flex flex-col relative transform md:-translate-y-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-primary to-secondary text-slate-900 text-xs font-bold px-4 py-1 rounded-full">MOST POPULAR</div>
+                    <h3 class="text-2xl font-bold mb-2">Express Repair</h3>
+                    <p class="text-sm text-slate-900/60 mb-6">Same-day turnaround</p>
+                    <div class="text-4xl font-bold font-heading text-primary mb-6">From ₹1499</div>
+                    <ul class="text-sm text-slate-900/70 space-y-4 mb-8 flex-1">
+                        <li><i class="fa-solid fa-check text-primary mr-2"></i>Priority Diagnostics</li>
+                        <li><i class="fa-solid fa-check text-primary mr-2"></i>Original Brand Parts</li>
+                        <li><i class="fa-solid fa-check text-primary mr-2"></i>90-Day Warranty</li>
+                        <li><i class="fa-solid fa-check text-primary mr-2"></i>Free Device Cleaning</li>
+                    </ul>
+                    <a href="booking.html" class="block w-full py-3 text-center rounded-xl bg-primary hover:bg-primary/90 text-white transition-colors font-medium shadow-[0_0_15px_rgba(3,105,161,0.3)]">Select Express</a>
                 </div>
                 
-                <!-- FAQ Item 3 -->
-                <div class="bg-card border border-slate-100 rounded-2xl overflow-hidden transition-all">
-                    <button class="faq-btn w-full px-6 py-5 flex items-center justify-between text-left font-bold text-lg hover:bg-slate-50 transition-colors">
-                        <span class="flex items-center gap-3"><i class="fa-solid fa-chevron-down text-primary text-sm transition-transform"></i> Do you offer a warranty and a bill?</span>
-                    </button>
-                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300">
-                        <div class="px-6 pb-5 pl-12 text-slate-900/70 text-sm">
-                            Yes! All our repairs come with an official GST invoice and a standard 90-day warranty covering both parts and labor.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- FAQ Item 4 -->
-                <div class="bg-card border border-slate-100 rounded-2xl overflow-hidden transition-all">
-                    <button class="faq-btn w-full px-6 py-5 flex items-center justify-between text-left font-bold text-lg hover:bg-slate-50 transition-colors">
-                        <span class="flex items-center gap-3"><i class="fa-solid fa-chevron-down text-primary text-sm transition-transform"></i> How do you ensure my data stays safe?</span>
-                    </button>
-                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300">
-                        <div class="px-6 pb-5 pl-12 text-slate-900/70 text-sm">
-                            We adhere to strict data privacy policies. We do not access your personal data during hardware repairs, though we highly advise backing up your device before handing it over just in case.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- FAQ Item 5 -->
-                <div class="bg-card border border-slate-100 rounded-2xl overflow-hidden transition-all">
-                    <button class="faq-btn w-full px-6 py-5 flex items-center justify-between text-left font-bold text-lg hover:bg-slate-50 transition-colors">
-                        <span class="flex items-center gap-3"><i class="fa-solid fa-chevron-down text-primary text-sm transition-transform"></i> Do I get a receipt when I submit my device?</span>
-                    </button>
-                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300">
-                        <div class="px-6 pb-5 pl-12 text-slate-900/70 text-sm">
-                            Absolutely. You receive a digital job card and receipt immediately upon dropping off your device or when our pickup executive collects it.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- FAQ Item 6 -->
-                <div class="bg-card border border-slate-100 rounded-2xl overflow-hidden transition-all">
-                    <button class="faq-btn w-full px-6 py-5 flex items-center justify-between text-left font-bold text-lg hover:bg-slate-50 transition-colors">
-                        <span class="flex items-center gap-3"><i class="fa-solid fa-chevron-down text-primary text-sm transition-transform"></i> How long does a typical repair take?</span>
-                    </button>
-                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300">
-                        <div class="px-6 pb-5 pl-12 text-slate-900/70 text-sm">
-                            Most standard repairs (like screen and battery replacements) are completed within 2 to 4 hours. Complex motherboard issues may take 1-3 business days.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- FAQ Item 7 -->
-                <div class="bg-card border border-slate-100 rounded-2xl overflow-hidden transition-all">
-                    <button class="faq-btn w-full px-6 py-5 flex items-center justify-between text-left font-bold text-lg hover:bg-slate-50 transition-colors">
-                        <span class="flex items-center gap-3"><i class="fa-solid fa-chevron-down text-primary text-sm transition-transform"></i> Do you offer home pickup and drop services?</span>
-                    </button>
-                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300">
-                        <div class="px-6 pb-5 pl-12 text-slate-900/70 text-sm">
-                            Yes, we offer secure home pickup and delivery within our service areas so you don't even have to leave your home!
-                        </div>
-                    </div>
+                <!-- Enterprise Plan -->
+                <div class="bg-card border border-slate-100 rounded-2xl p-8 hover:border-primary/50 transition-all flex flex-col relative" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="text-2xl font-bold mb-2">Enterprise Plan</h3>
+                    <p class="text-sm text-slate-900/60 mb-6">For businesses & bulk</p>
+                    <div class="text-4xl font-bold font-heading mb-6">Custom</div>
+                    <ul class="text-sm text-slate-900/70 space-y-4 mb-8 flex-1">
+                        <li><i class="fa-solid fa-check text-primary mr-2"></i>Dedicated Account Manager</li>
+                        <li><i class="fa-solid fa-check text-primary mr-2"></i>On-site IT Support</li>
+                        <li><i class="fa-solid fa-check text-primary mr-2"></i>1-Year Extended Warranty</li>
+                        <li><i class="fa-solid fa-check text-primary mr-2"></i>Monthly Maintenance</li>
+                    </ul>
+                    <a href="contact.html" class="block w-full py-3 text-center rounded-xl border border-primary text-primary hover:bg-primary hover:text-slate-900 transition-colors font-medium">Contact Us</a>
                 </div>
             </div>
         </div>
-    </main>
+    
+
+        
+
+
+</main>
 
     <!-- Footer -->
     <footer class="bg-card border-t border-slate-200 pt-20 pb-10">
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
                 <div>
-                    <a href="index.html" class="flex flex-col items-start justify-center group cursor-pointer hover:opacity-90 transition-opacity scale-75 origin-left mb-6">
+                    <a href="../index.html" class="flex flex-col items-start justify-center group cursor-pointer hover:opacity-90 transition-opacity scale-75 origin-left mb-6">
                         <div class="text-[32px] font-black tracking-[-0.05em] leading-none uppercase font-heading text-slate-900 flex items-center">
-                            REPAI<span class="text-primary relative mx-[1px] inline-block">
-                                R
+                            ROBU<span class="text-primary relative mx-[1px] inline-block">
+                        Z
                                 <span class="absolute top-[8px] left-0 w-full h-[2.5px] bg-card z-10"></span>
                                 <span class="absolute bottom-[10px] left-0 w-full h-[2.5px] bg-card z-10"></span>
-                            </span>E
-                        </div>
+                            </span>TA
+                </div>
                         <div class="flex mt-0.5 ml-1 -skew-x-[15deg] text-[9px] font-bold tracking-[0.15em] uppercase overflow-hidden shadow-sm">
                             <div class="bg-primary text-white px-2 py-0.5 pl-2.5">TECH</div>
                             <div class="bg-slate-900 text-white px-2 py-0.5 pr-2.5">LABS</div>
@@ -222,7 +198,7 @@
                     <ul class="space-y-4 text-sm text-slate-900/60">
                         <li class="flex items-start gap-3">
                             <i class="fa-solid fa-location-dot mt-1 text-primary"></i>
-                            <span>103, First Floor, Sun South Winds, Safal Parisar Road, South Bopal, Ahmedabad, Gujarat 380058</span>
+                            <span>103, First Floor, Sun South Winds, Safal Parisar Road, South Bopal, Ahmedabad, Gujarat 380057</span>
                         </li>
                         <li class="flex items-center gap-3">
                             <i class="fa-solid fa-phone text-primary"></i>
@@ -230,14 +206,14 @@
                         </li>
                         <li class="flex items-center gap-3">
                             <i class="fa-solid fa-envelope text-primary"></i>
-                            <span>info@REPAIRE.com</span>
+                            <span>info@robuztatechlabs.com</span>
                         </li>
                     </ul>
                 </div>
             </div>
             
             <div class="pt-8 border-t border-slate-200 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-slate-900/50">
-                <p>&copy; 2026 REPAIRE. All rights reserved.</p>
+                <p>&copy; 2026 ROBUZTA. All rights reserved.</p>
                 <div class="flex gap-6">
                     <a href="#" class="hover:text-slate-900 transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-slate-900 after:transition-all hover:after:w-full">Privacy Policy</a>
                     <a href="#" class="hover:text-slate-900 transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-slate-900 after:transition-all hover:after:w-full">Terms of Service</a>
@@ -246,36 +222,31 @@
         </div>
     </footer>
 
-    <script src="js/theme.js"></script>
-    <script src="js/cursor.js"></script>
-    <script src="js/search.js"></script>
-    <script src="js/chatbot.js"></script>
+    <script src="../js/main.js?v=6"></script>
+    <script src="../js/theme.js"></script>
+    <script src="../js/cursor.js"></script>
+    <script src="../js/search.js"></script>
+    <script src="../js/chatbot.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({ once: true });
-        
-        // FAQ accordion trigger
-        const faqBtns = document.querySelectorAll('.faq-btn');
-        faqBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                const content = this.nextElementSibling;
-                const icon = this.querySelector('i');
-                
-                if (content.style.maxHeight) {
-                    content.style.maxHeight = null;
-                    icon.classList.remove('rotate-180');
-                } else {
-                    faqBtns.forEach(otherBtn => {
-                        otherBtn.nextElementSibling.style.maxHeight = null;
-                        otherBtn.querySelector('i').classList.remove('rotate-180');
-                    });
-                    content.style.maxHeight = content.scrollHeight + "px";
-                    icon.classList.add('rotate-180');
-                }
-            });
-        });
-    </script>
-<script src="js/auth.js"></script>
+    <script>AOS.init({ once: true });</script>
+<script src="../js/auth.js?v=2"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
