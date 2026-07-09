@@ -228,9 +228,9 @@
                     const tax = baseCost * 0.18;
                     const total = baseCost + tax;
                     
-                    document.getElementById('paySubtotal').innerText = '?' + baseCost.toFixed(2);
-                    document.getElementById('payTax').innerText = '?' + tax.toFixed(2);
-                    document.getElementById('payTotal').innerText = '?' + total.toFixed(2);
+                    document.getElementById('paySubtotal').innerText = '\u20B9' + baseCost.toFixed(2);
+                    document.getElementById('payTax').innerText = '\u20B9' + tax.toFixed(2);
+                    document.getElementById('payTotal').innerText = '\u20B9' + total.toFixed(2);
                     
                     document.getElementById('payBtn').disabled = false;
                 } else {

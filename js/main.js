@@ -1,4 +1,4 @@
-﻿document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
     // Make service cards clickable
     document.querySelectorAll('.group.bg-card').forEach(card => {
         card.style.cursor = 'pointer';
@@ -286,10 +286,10 @@
             document.getElementById('summary-issue').innerText = currentIssue;
             
             // Dummy logic for price
-            let priceStr = 'Γé╣2,499 - Γé╣4,999';
-            if(currentIssue.includes('Screen')) priceStr = 'Γé╣3,999 - Γé╣8,999';
-            if(currentIssue.includes('Motherboard')) priceStr = 'Γé╣6,999 - Γé╣15,999';
-            if(currentIssue.includes('Water')) priceStr = 'Γé╣2,999 - Γé╣11,999';
+            let priceStr = '\u20B92,499 - \u20B94,999';
+            if(currentIssue.includes('Screen')) priceStr = '\u20B93,999 - \u20B98,999';
+            if(currentIssue.includes('Motherboard')) priceStr = '\u20B96,999 - \u20B915,999';
+            if(currentIssue.includes('Water')) priceStr = '\u20B92,999 - \u20B911,999';
             
             document.getElementById('estimate-price').innerText = priceStr;
             goToStep(3);

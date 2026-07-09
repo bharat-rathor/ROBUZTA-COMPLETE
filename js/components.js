@@ -158,9 +158,9 @@ const AppComponents = {
                     <a href="#"
                         class="hover:text-slate-900 transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-slate-900 after:transition-all hover:after:w-full">Privacy
                         Policy</a>
-                    <a href="#"
+                    <a href="${pagePath}terms.html"
                         class="hover:text-slate-900 transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-slate-900 after:transition-all hover:after:w-full">Terms
-                        of Service</a>
+                        & Conditions</a>
                 </div>
             </div>
         </div>

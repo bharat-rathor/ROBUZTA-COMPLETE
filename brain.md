@@ -11,7 +11,7 @@ This file serves as the central brain and knowledge repository for the **REPAIRE
 - **Core Goal:** Provide a premium, high-fidelity user experience for customers booking repairs, tracking devices, and exploring services.
 
 ## 2. Technology Stack
-- **Structure:** Vanilla HTML5
+- **Structure:** Vanilla HTML5 with Dynamic JS Components
 - **Styling:** Tailwind CSS (via CDN)
 - **Interactivity:** Vanilla JavaScript (ES6)
 - **Icons:** FontAwesome 6 (Free versions: e.g., `fa-shield-halved`)
@@ -30,33 +30,32 @@ This file serves as the central brain and knowledge repository for the **REPAIRE
   - `sans`: Inter (Body text)
   - `heading`: Poppins (Headers, aggressive/bold branding)
 - **UI Details:** Soft shadows (`shadow-[0_0_15px_rgba...]`), rounded corners (`rounded-xl`, `rounded-2xl`, `rounded-3xl`), border outlines (`border-slate-200`).
+- **Currency:** Indian Rupee globally standardized using robust HTML encoding (`&#8377;`) and JavaScript Unicode (`\u20B9`) to prevent character corruption.
 
 ## 4. Platform Pages (A to Z)
 1. **`about.html`**: Contains the massive video presentation, "Our Story", and company mission.
 2. **`about_section_snippet.html`**: A reusable snippet used for the homepage containing a brief "Who We Are" and embedded story video.
 3. **`blog.html`**: Articles and repair tips.
-4. **`booking.html`**: Core engine for users to book a repair service.
-5. **`contact.html`**: Features a premium dual-map layout showing branch locations (using `max-w-5xl` constraints for optimal ultrawide viewing).
+4. **`booking.html`**: Core engine for users to book a repair service. (Protected by Authentication).
+5. **`contact.html`**: Features a premium dual-map layout showing branch locations.
 6. **`faq.html`**: Frequently asked questions.
 7. **`gallery.html`**: Visual proof of lab setups and successful repairs.
 8. **`index.html`**: The main landing page featuring a hero slider, AI estimator logic, and quick links.
-9. **`login.html`**: Authentication portal featuring standard login, signup, password reset, and functional **Google / Facebook** social auth integration (original multi-colored SVG logos).
-10. **`payment.html`**: Payment gateway UI.
+9. **`login.html`**: Authentication portal featuring standard login, signup, password reset, and functional **Google / Facebook** social auth integration. Includes smart redirection via `redirectAfterLogin`.
+10. **`payment.html`**: Payment gateway UI. (Protected by Authentication).
 11. **`pricing.html`**: Transparent pricing models.
 12. **`profile.html`**: User dashboard for managing ongoing repairs.
 13. **`services.html`**: Details on mobile, laptop, PC, and data recovery services.
-14. **`terms.html`**: Legal policies.
+14. **`terms.html`**: Legal policies and Terms & Conditions. (Linked globally in the footer and signup forms).
 15. **`testimonials_*.html`**: User reviews and trust-building slider blocks.
 16. **`tracking.html`**: Order/repair tracking interface.
 
 ## 5. Core Functionality & Scripts (`/js`)
-- **`auth.js`**: Handles session management and frontend local storage authentication.
+- **`components.js`**: **(NEW)** The core layout engine. Dynamically injects the global Header and Footer across all pages via `<div id="header-placeholder"></div>`. It smartly calculates `rootPath` and `pagePath` depending on whether the user is in the root directory or a subfolder, ensuring 100% accurate relative link routing.
+- **`auth.js`**: Handles session management and frontend local storage authentication. It acts as a route guard, intercepting clicks on protected links (like `booking.html`) and forcing unauthenticated users to log in first while remembering their intended destination via `localStorage.setItem('redirectAfterLogin', ...)`
 - **`chatbot.js`**: Automated customer support UI script.
-- **`cursor.js`**: Custom interactive cursor (Currently disabled/removed to keep the UI clean and professional based on user request).
 - **`search.js`**: Global site search toggle.
 - **`theme.js`**: Dark/Light mode and theme management logic.
-- **Social Login:** Simulated frontend login via Google/Facebook that automatically logs users in and redirects them to `index.html`.
-- **YouTube Embeds:** Specifically modified to bypass `strict-origin-when-cross-origin` restrictions.
 
 ## 6. Our Story (Company History)
 - **2012:** Began as a passion for understanding how gadgets function.
@@ -66,8 +65,10 @@ This file serves as the central brain and knowledge repository for the **REPAIRE
 - **Present:** A full-service repair network with a dedicated laboratory, highly skilled engineers, strict parts verification, and a no-compromise warranty policy.
 
 ## 7. Known Issues / Resolved Bugs
+- **Dynamic Routing Bug:** Resolved. `components.js` initially caused broken footer links on sub-pages (e.g., trying to access `../services.html`). Fixed by decoupling `rootPath` and `pagePath` logic.
+- **Currency Encoding Corruption:** Resolved. The Indian Rupee symbol (`₹`) was breaking (`?999`, `â‚¹`, `Γé╣`) due to UTF-8/ANSI mismatches. Fixed by globally swapping to HTML entities (`&#8377;`) and Unicode (`\u20B9`).
+- **Auth Flow Redirects:** Resolved. Logging in was always dumping users to `index.html`. Refactored `login.html` to consume `redirectAfterLogin` so users seamlessly continue their booking or payment flow after authenticating.
 - **Error 153 (YouTube):** Resolved. Occurs when trying to play YouTube embedded videos via local `file:///` protocol. **Fix:** Use a local web server (like localhost:8080) for development.
-- **FontAwesome Pro Icons:** Resolved. Initial code used premium icons (e.g., `fa-shield-check`) which failed to render. Swapped globally to standard free icons (`fa-shield-halved`).
 - **Map Full-Width Bug:** Resolved. Contact page maps were stretching indefinitely on large monitors. Added `max-w-5xl mx-auto` to constrain the layout gracefully.
 
 ---
