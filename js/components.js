@@ -1,11 +1,11 @@
 // Dynamic Components Loader
 const AppComponents = {
-    getHeader: (basePath, pagePrefix) => `
+    getHeader: (rootPath, pagePath) => `
 <header id="header"
         class="fixed w-full top-0 z-50 transition-all duration-300 bg-dark/80 backdrop-blur-md border-b border-slate-200 py-4 shadow-lg">
         <div class="w-full px-6 lg:px-12 flex items-center justify-between">
             <!-- Logo -->
-            <a href="${basePath}index.html"
+            <a href="${rootPath}index.html"
                 class="flex flex-col items-start justify-center group cursor-pointer hover:opacity-90 transition-opacity scale-90 origin-left">
                 <div
                     class="text-[32px] font-black tracking-[-0.05em] leading-none uppercase font-heading text-slate-900 flex items-center">
@@ -23,18 +23,18 @@ const AppComponents = {
             </a>
 
             <nav class="hidden lg:flex items-center gap-8 font-medium">
-                <a href="${basePath}index.html"
+                <a href="${rootPath}index.html"
                     class="hover:text-primary transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Home</a>
-                <a href="${basePath}${pagePrefix}services.html"
+                <a href="${pagePath}services.html"
                     class="hover:text-primary transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Services</a>
-                <a href="${basePath}${pagePrefix}about.html"
+                <a href="${pagePath}about.html"
                     class="hover:text-primary transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">About
                     Us</a>
-                <a href="${basePath}${pagePrefix}pricing.html"
+                <a href="${pagePath}pricing.html"
                     class="hover:text-primary transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Pricing</a>
-                <a href="${basePath}${pagePrefix}tracking.html"
+                <a href="${pagePath}tracking.html"
                     class="hover:text-primary transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Tracking</a>
-                <a href="${basePath}${pagePrefix}contact.html"
+                <a href="${pagePath}contact.html"
                     class="hover:text-primary transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Contact</a>
             </nav>
 
@@ -44,7 +44,7 @@ const AppComponents = {
                     <i class="fa-solid fa-search text-lg"></i>
                 </button>
                 <div class="w-px h-6 bg-slate-200"></div>
-                <a href="${basePath}${pagePrefix}booking.html"
+                <a href="${pagePath}booking.html"
                     class="px-6 py-2.5 rounded-full bg-primary hover:bg-primary/90 font-medium text-white transition-all shadow-[0_0_15px_rgba(3,105,161,0.4)] hover:shadow-[0_0_25px_rgba(3,105,161,0.6)] flex items-center gap-2 transform hover:-translate-y-0.5">
                     <span>Book Repair</span>
                     <i class="fa-solid fa-arrow-right text-sm"></i>
@@ -58,7 +58,7 @@ const AppComponents = {
         </div>
     </header>
 `,
-    getFooter: (basePath, pagePrefix) => `
+    getFooter: (rootPath, pagePath) => `
 <footer class="bg-card border-t border-slate-200 pt-20 pb-10">
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
@@ -102,15 +102,15 @@ const AppComponents = {
                                 <div>
                     <h4 class="font-bold mb-6 text-slate-800">Our Services</h4>
                     <ul class="space-y-3.5 text-sm text-slate-900/70 font-medium">
-                        <li><a href="${basePath}${pagePrefix}services.html#mobile-repair"
+                        <li><a href="${pagePath}services.html#mobile-repair"
                                 class="hover:text-primary transition-colors inline-flex items-center group relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full w-max"><i class="fa-solid fa-chevron-right text-[10px] text-primary/50 mr-2 group-hover:translate-x-1 transition-transform"></i>Mobile Repair</a></li>
-                        <li><a href="${basePath}${pagePrefix}services.html#laptop-repair"
+                        <li><a href="${pagePath}services.html#laptop-repair"
                                 class="hover:text-primary transition-colors inline-flex items-center group relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full w-max"><i class="fa-solid fa-chevron-right text-[10px] text-primary/50 mr-2 group-hover:translate-x-1 transition-transform"></i>Laptop & MacBook</a></li>
-                        <li><a href="${basePath}${pagePrefix}services.html#pc-repair"
+                        <li><a href="${pagePath}services.html#pc-repair"
                                 class="hover:text-primary transition-colors inline-flex items-center group relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full w-max"><i class="fa-solid fa-chevron-right text-[10px] text-primary/50 mr-2 group-hover:translate-x-1 transition-transform"></i>PC & Gaming Setup</a></li>
-                        <li><a href="${basePath}${pagePrefix}services.html#data-recovery"
+                        <li><a href="${pagePath}services.html#data-recovery"
                                 class="hover:text-primary transition-colors inline-flex items-center group relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full w-max"><i class="fa-solid fa-chevron-right text-[10px] text-primary/50 mr-2 group-hover:translate-x-1 transition-transform"></i>Data Recovery</a></li>
-                        <li><a href="${basePath}${pagePrefix}services.html"
+                        <li><a href="${pagePath}services.html"
                                 class="hover:text-primary transition-colors inline-flex items-center group relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full w-max"><i class="fa-solid fa-chevron-right text-[10px] text-primary/50 mr-2 group-hover:translate-x-1 transition-transform"></i>Smartwatch Repair</a></li>
                     </ul>
                 </div>
@@ -118,15 +118,15 @@ const AppComponents = {
                 <div>
                     <h4 class="font-bold mb-6 text-slate-800">Quick Links</h4>
                     <ul class="space-y-3.5 text-sm text-slate-900/70 font-medium">
-                        <li><a href="${basePath}${pagePrefix}about.html"
+                        <li><a href="${pagePath}about.html"
                                 class="hover:text-primary transition-colors inline-flex items-center group relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full w-max"><i class="fa-solid fa-chevron-right text-[10px] text-primary/50 mr-2 group-hover:translate-x-1 transition-transform"></i>About Us</a></li>
-                        <li><a href="${basePath}${pagePrefix}tracking.html"
+                        <li><a href="${pagePath}tracking.html"
                                 class="hover:text-primary transition-colors inline-flex items-center group relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full w-max"><i class="fa-solid fa-chevron-right text-[10px] text-primary/50 mr-2 group-hover:translate-x-1 transition-transform"></i>Track Repair</a></li>
-                        <li><a href="${basePath}${pagePrefix}pricing.html"
+                        <li><a href="${pagePath}pricing.html"
                                 class="hover:text-primary transition-colors inline-flex items-center group relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full w-max"><i class="fa-solid fa-chevron-right text-[10px] text-primary/50 mr-2 group-hover:translate-x-1 transition-transform"></i>Pricing Calculator</a></li>
-                        <li><a href="${basePath}${pagePrefix}booking.html"
+                        <li><a href="${pagePath}booking.html"
                                 class="hover:text-primary transition-colors inline-flex items-center group relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full w-max"><i class="fa-solid fa-chevron-right text-[10px] text-primary/50 mr-2 group-hover:translate-x-1 transition-transform"></i>Book a Service</a></li>
-                        <li><a href="${basePath}${pagePrefix}contact.html"
+                        <li><a href="${pagePath}contact.html"
                                 class="hover:text-primary transition-colors inline-flex items-center group relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full w-max"><i class="fa-solid fa-chevron-right text-[10px] text-primary/50 mr-2 group-hover:translate-x-1 transition-transform"></i>Contact Support</a></li>
                     </ul>
                 </div>
@@ -170,17 +170,17 @@ const AppComponents = {
 
 document.addEventListener('DOMContentLoaded', () => {
     const isPage = window.location.pathname.includes('/pages/') || window.location.pathname.includes('\\pages\\');
-    const basePath = isPage ? '../' : './';
-    const pagePrefix = isPage ? '' : 'pages/';
+    const rootPath = isPage ? '../' : './';
+    const pagePath = isPage ? './' : 'pages/';
 
     const headerPlaceholder = document.getElementById('header-placeholder');
     if (headerPlaceholder) {
-        headerPlaceholder.outerHTML = AppComponents.getHeader(basePath, pagePrefix);
+        headerPlaceholder.outerHTML = AppComponents.getHeader(rootPath, pagePath);
     }
 
     const footerPlaceholder = document.getElementById('footer-placeholder');
     if (footerPlaceholder) {
-        footerPlaceholder.outerHTML = AppComponents.getFooter(basePath, pagePrefix);
+        footerPlaceholder.outerHTML = AppComponents.getFooter(rootPath, pagePath);
     }
 });
 
