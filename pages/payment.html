@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
@@ -194,16 +194,7 @@
         </div>
     </main>
 
-    <footer class="bg-card border-t border-slate-200 pt-10 pb-10 mt-auto">
-        <div class="container mx-auto px-6 flex items-center justify-between text-sm text-slate-500">
-            <p>&copy; 2026 ROBUZTA. All rights reserved.</p>
-            <div class="flex gap-4">
-                <i class="fa-brands fa-cc-visa text-2xl"></i>
-                <i class="fa-brands fa-cc-mastercard text-2xl"></i>
-                <i class="fa-brands fa-google-pay text-2xl"></i>
-            </div>
-        </div>
-    </footer>
+    <div id="footer-placeholder"></div>
 
     <script src="../js/auth.js?v=2"></script>
     <script>
@@ -230,7 +221,7 @@
                     document.getElementById('payIssue').innerText = bookingData.issue;
                     document.getElementById('payMode').innerText = bookingData.status === 'Doorstep Pickup' ? bookingData.status : 'Store Drop-off';
                     
-                    // Parse cost which is a string like "₹1499"
+                    // Parse cost which is a string like "?1499"
                     const baseCostStr = bookingData.cost.replace(/[^0-9.]/g, '');
                     const baseCost = parseFloat(baseCostStr) || 0;
                     

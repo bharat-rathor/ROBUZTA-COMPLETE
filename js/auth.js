@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             // Booking Protection logic (exempting links with 'no-auth' class)
-            const bookLink = e.target.closest('a[href="booking.html"]');
+            const bookLink = e.target.closest('a[href$="booking.html"]');
             if (bookLink && !bookLink.classList.contains('no-auth')) {
                 const isAuth = localStorage.getItem('currentUser');
                 if (!isAuth) {

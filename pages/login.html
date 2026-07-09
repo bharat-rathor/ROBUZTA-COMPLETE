@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
@@ -239,61 +239,9 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-card border-t border-slate-200 pt-20 pb-10">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-                <div>
-                    <a href="../index.html" class="flex items-center gap-2 mb-6">
-                        <div class="w-8 h-8 rounded bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-sm font-bold">
-                            <i class="fa-solid fa-shield-halved text-slate-900"></i>
-                        </div>
-                        <span class="font-heading font-bold text-xl">TechFix<span class="text-primary">Pro</span></span>
-                    </a>
-                    <p class="text-slate-900/60 text-sm leading-relaxed mb-6">
-                        Premium electronics repair services with a focus on quality, speed, and customer satisfaction. We bring your devices back to life.
-                    </p>
-                </div>
-                
-                <div>
-                    <h4 class="font-bold mb-6">Our Services</h4>
-                    <ul class="space-y-3 text-sm text-slate-900/60">
-                        <li><a href="services.html" class="hover:text-primary transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Mobile Repair</a></li>
-                        <li><a href="services.html" class="hover:text-primary transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Laptop & MacBook</a></li>
-                        <li><a href="services.html" class="hover:text-primary transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">PC & Gaming Setup</a></li>
-                        <li><a href="services.html" class="hover:text-primary transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Data Recovery</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="font-bold mb-6">Quick Links</h4>
-                    <ul class="space-y-3 text-sm text-slate-900/60">
-                        <li><a href="about.html" class="hover:text-primary transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">About Us</a></li>
-                        <li><a href="tracking.html" class="hover:text-primary transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Track Repair</a></li>
-                        <li><a href="pricing.html" class="hover:text-primary transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Pricing Plans</a></li>
-                        <li><a href="booking.html" class="hover:text-primary transition-colors inline-block relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Book a Service</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="font-bold mb-6">Contact Us</h4>
-                    <ul class="space-y-4 text-sm text-slate-900/60">
-                        <li class="flex items-start gap-3">
-                            <i class="fa-solid fa-location-dot mt-1 text-primary"></i>
-                            <span>123 Tech Avenue, Silicon Valley, CA 94025</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-phone text-primary"></i>
-                            <span>+1 (800) 123-4567</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="pt-8 border-t border-slate-200 text-center text-sm text-slate-900/50">
-                <p>&copy; 2026 ROBUZTA Tech Labs. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+    <div id="footer-placeholder"></div>
 
+    <script src="../js/components.js"></script>
     <script src="../js/main.js?v=6"></script>
     <script src="../js/theme.js"></script>
     <script src="../js/cursor.js"></script>
@@ -417,7 +365,13 @@
                 localStorage.setItem('currentUser', JSON.stringify({ email: user.email, name: user.name }));
                 showMessage("Login successful! Redirecting...", true);
                 setTimeout(() => {
-                    window.location.href = '../index.html';
+                    const redirect = localStorage.getItem('redirectAfterLogin');
+                    if (redirect) {
+                        localStorage.removeItem('redirectAfterLogin');
+                        window.location.href = redirect;
+                    } else {
+                        window.location.href = '../index.html';
+                    }
                 }, 1500);
             } else {
                 showMessage("Invalid credentials. Try guest account (guest@techfix.com / password) or Sign Up.");
@@ -426,7 +380,13 @@
                     localStorage.setItem('currentUser', JSON.stringify({ email, name: 'Guest User' }));
                     showMessage("Login successful! Redirecting...", true);
                     setTimeout(() => {
-                        window.location.href = '../index.html';
+                        const redirect = localStorage.getItem('redirectAfterLogin');
+                        if (redirect) {
+                            localStorage.removeItem('redirectAfterLogin');
+                            window.location.href = redirect;
+                        } else {
+                            window.location.href = '../index.html';
+                        }
                     }, 1500);
                 }
             }
@@ -495,7 +455,13 @@
                 showMessage(`${provider} Login successful! Redirecting...`, true);
                 
                 setTimeout(() => {
-                    window.location.href = '../index.html';
+                    const redirect = localStorage.getItem('redirectAfterLogin');
+                    if (redirect) {
+                        localStorage.removeItem('redirectAfterLogin');
+                        window.location.href = redirect;
+                    } else {
+                        window.location.href = '../index.html';
+                    }
                 }, 1500);
             }, 1000);
         };
